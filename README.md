@@ -7,7 +7,7 @@ Framework: Rasa.
 # 2. Prerequisites
 - make ```sudo apt install make```
 - python3-dev python3-pip ```sudo apt install python3-dev python3-pip```
-- Python >= 3.6
+- Python >= 3.8
 
 # 3. Install
 - Install the requirements inside of a Python virtualenv (recommend)
