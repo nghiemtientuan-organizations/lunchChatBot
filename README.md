@@ -1,7 +1,10 @@
 # 1. Introduction
 Project Name: BanhBao.
+
 Description: This is a project that allows users to recommend dishes through chatbot.
+
 Language: Python 3.
+
 Framework: Rasa.
 
 # 2. Prerequisites
