@@ -16,7 +16,7 @@ Framework: Rasa.
 - Install the requirements inside of a Python virtualenv (recommend)
 ```BASH
     pip install virtualenv
-    virtualenv -p python3 venv
+    virtualenv -p python3.8 venv
     source venv/bin/activate
 ```
 
