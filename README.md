@@ -40,13 +40,9 @@ terminal 2 (http://localhost:5055)
 - [Rasa](https://rasa.com/docs/rasa/installation/)
 
 # 5. Example rasa commands
-- Train nlu
+- Train nlu and run in shell
 ```BASH
     rasa train nlu
-```
-
-- Shell
-```BASH
     rasa shell nlu
 ```
 
@@ -55,24 +51,9 @@ terminal 2 (http://localhost:5055)
     /stop
 ```
 
-- Train
+- Train all
 ```BASH
     rasa train
-```
-
-- Train
-```BASH
-    rasa train
-```
-
-- Test chatbot in localhost
-```BASH
-    rasa x
-    rasa run actions
-```
-
-- Test rasa shell
-```BASH
     rasa shell
 ```
 
