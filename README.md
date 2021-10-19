@@ -55,6 +55,8 @@ terminal 2 (http://localhost:5055)
 ```BASH
     rasa train
     rasa shell
+    rasa run actions
+    rasa x
 ```
 
 - To deactivate

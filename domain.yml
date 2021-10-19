@@ -19,6 +19,8 @@ intents:
     use_entities: true
 - bot_challenge:
     use_entities: true
+- ask_bot_ability:
+    use_entities: true
 entities: []
 slots: {}
 responses:
@@ -35,6 +37,15 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-actions: []
+  utter_fallback:
+  - text: I don't know
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_fallback
 forms: {}
 e2e_actions: []

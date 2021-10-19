@@ -90,3 +90,11 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: ask_bot_ability
+  examples: |
+    - bạn có thể làm những gì nhỉ?
+    - bạn có thể làm gì?
+    - hãy cho tôi biết bạn có thể làm gì?
+    - khả năng của bot là gì?
+    - bot có thể làm gì?
