@@ -1,9 +1,11 @@
 version: '2.0'
 config:
   store_entities_as_slots: true
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
 intents:
 - greet:
     use_entities: true
@@ -21,8 +23,19 @@ intents:
     use_entities: true
 - ask_bot_ability:
     use_entities: true
+- mood_lament:
+- ask_bot_name:
+- ask_time:
+- ask_now_session:
+- ask_suggest_food:
+- ask_food_link:
+- ask_cook_food:
+- ask_food_other:
+
 entities: []
+
 slots: {}
+
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -39,6 +52,7 @@ responses:
   - text: I am a bot, powered by Rasa.
   utter_fallback:
   - text: I don't know
+
 actions:
 - utter_greet
 - utter_cheer_up
