@@ -204,6 +204,16 @@ nlu:
     - mùa gì mà nóng lạnh thất thường
     - what session
 
+- intent: ask_now_weather
+  examples: |
+    - thời tiết nay thế nào
+    - thời tiết hiện tại thế nào
+    - ngoài trời bao nhiêu độ
+    - trời có lạnh không
+    - cho tao biết nay bao nhiêu độ vậy
+    - thời tiết lạnh không?
+    - thời tiết nóng không?
+
 - intent: ask_suggest_food
   examples: |
     - cho tao một món đi
@@ -215,6 +225,8 @@ nlu:
     - ăn gì
     - tiểu nhị cho món
     - suggest cho món nào
+    - thời tiết thế này ăn gì được nhỉ
+    - nên ăn gì
 
 - intent: ask_food_link
   examples: |

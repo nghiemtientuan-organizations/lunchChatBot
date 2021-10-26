@@ -1,11 +1,9 @@
 version: '2.0'
 config:
   store_entities_as_slots: true
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-
 intents:
 - greet:
     use_entities: true
@@ -24,21 +22,34 @@ intents:
 - ask_bot_ability:
     use_entities: true
 - mood_lament:
+    use_entities: true
 - ask_bot_name:
+    use_entities: true
 - ask_time:
+    use_entities: true
 - ask_now_session:
+    use_entities: true
 - ask_suggest_food:
+    use_entities: true
 - ask_food_link:
+    use_entities: true
 - ask_cook_food:
+    use_entities: true
 - ask_food_other:
-
+    use_entities: true
+- ask_now_weather:
+    use_entities: true
 entities: []
-
 slots: {}
-
 responses:
   utter_greet:
   - text: Hey! How are you?
+  utter_bot_challenge:
+  - text: Đúng tôi là bot bạn ạ. Bạn có thể thử hehe
+  utter_bot_ability:
+  - text: Tôi có thể làm những công việc sau:\n1. Trò chuyện với bạn.\n2. Hỏi thời gian, mùa hiện tại, thời tiết hiện tại.\n3. Gợi ý món.\n4. Tìm cách nấu
+  utter_bot_name:
+  - text: Tôi tên là TunPhun
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -52,7 +63,6 @@ responses:
   - text: I am a bot, powered by Rasa.
   utter_fallback:
   - text: I don't know
-
 actions:
 - utter_greet
 - utter_cheer_up
@@ -61,5 +71,10 @@ actions:
 - utter_goodbye
 - utter_iamabot
 - utter_fallback
+- action_get_date
+- action_get_season
+- action_get_temperature
+- action_get_food
+- action_how_to_cook_food
 forms: {}
 e2e_actions: []

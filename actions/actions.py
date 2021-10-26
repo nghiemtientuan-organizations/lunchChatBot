@@ -93,6 +93,33 @@ class ActionGetTemperature(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         response = requests.get(weather_org_url)
+        print(response)
+        dispatcher.utter_message(text='response temperature here')
+
+        return []
+
+# action get food
+class ActionGetFood(Action):
+    def name(self) -> Text:
+        return 'action_get_food'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # get food here
+        dispatcher.utter_message(text='response temperature here')
+
+        return []
+
+# action how to cook food
+class ActionHowToCookFood(Action):
+    def name(self) -> Text:
+        return 'action_how_to_cook_food'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # action find cook food here
         dispatcher.utter_message(text='response temperature here')
 
         return []

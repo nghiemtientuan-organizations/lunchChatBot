@@ -26,14 +26,15 @@ Framework: Rasa.
 ```
 
 - Start Rasa X
-terminal 1 (http://localhost:5005)
+terminal 1 (http://localhost:5055)
 ```BASH
-    rasa x
+    rasa train
+    rasa run actions
 ```
 
-terminal 2 (http://localhost:5055)
+terminal 2 - UI (http://localhost:5005)
 ```BASH
-    rasa run actions
+    rasa x
 ```
 
 # 4. Documents:
