@@ -5,8 +5,6 @@ services:
     image: rasa/rasa:2.6.0-full
     container_name: lunch_rasa
     restart: unless-stopped
-    ports:
-      - "5005:5005"
     volumes:
       - ./:/app
     command: ["run", "--enable-api", "--cors", " \"*\"", "--verbose"]
@@ -16,7 +14,7 @@ services:
   app:
     depends_on:
       - rasa
-    image: rasa/rasa-sdk:2.6.0
+    build: .
     container_name: app_lunch_rasa_action
     restart: unless-stopped
     command: ["start", "--actions", "actions", "-vv"]

@@ -12,7 +12,18 @@ Framework: Rasa.
 - python3-dev python3-pip ```sudo apt install python3-dev python3-pip```
 - Python >= 3.8
 
-# 3. Install
+# 3. Run with docker
+```
+    docker-compose up -d
+    docker exec -it lunch_rasa sh
+    rasa train
+    exit
+```
+
+# 4. Documents:
+- [Rasa](https://rasa.com/docs/rasa/installation/)
+
+# 5. Install immediate to PC
 - Install the requirements inside of a Python virtualenv (recommend)
 ```BASH
     pip install virtualenv
@@ -37,10 +48,7 @@ terminal 2 - UI (http://localhost:5005)
     rasa x
 ```
 
-# 4. Documents:
-- [Rasa](https://rasa.com/docs/rasa/installation/)
-
-# 5. Example rasa commands
+# 6. Example rasa commands
 - Train nlu and run in shell
 ```BASH
     rasa train nlu
