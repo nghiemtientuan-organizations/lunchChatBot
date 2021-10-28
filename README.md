@@ -21,6 +21,16 @@ Framework: Rasa.
     exit
 ```
 
+Access link: http://localhost:5002
+
+Change folder permission
+```
+    sudo chmod 777 models events.db* rasa.db*
+    sudo chown ${USER}:root models events.db* rasa.db*
+    docker stop $(docker ps -aq)
+    docker-compose up -d
+```
+
 # 4. Documents:
 - [Rasa](https://rasa.com/docs/rasa/installation/)
 
