@@ -14,7 +14,7 @@ services:
   app:
     depends_on:
       - rasa
-    build: ..
+    build: .
     container_name: lunch_rasa_action
     restart: unless-stopped
     command: ["start", "--actions", "actions", "-vv"]
