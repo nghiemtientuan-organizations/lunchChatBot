@@ -136,3 +136,5 @@ events.db-wal
 rasa.db
 rasa.db-shm
 rasa.db-wal
+.keras
+.config

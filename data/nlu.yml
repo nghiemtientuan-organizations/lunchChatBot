@@ -1,28 +1,37 @@
 version: "2.0"
 
+# input user send message
 nlu:
+
+# greeting
 - intent: greet
   examples: |
     - hey
+    - hey bot
     - hello
     - hi
     - hello there
     - good morning
     - good evening
-    - moin
     - hey there
     - let's go
-    - hey dude
     - goodmorning
     - goodevening
     - good afternoon
+    - xin chào
+    - chào bạn
+    - chào bot
+    - bot ơi
+    - này tao bảo
+    - có đó không
+    - bot đâu rồi
+    - lô
+    - hê lô
 
 - intent: goodbye
   examples: |
     - good afternoon
-    - cu
-    - good by
-    - cee you later
+    - see you later
     - good night
     - bye
     - goodbye
@@ -30,6 +39,14 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - tạm biệt bot
+    - đủ rồi
+    - không cần nữa
+    - cút
+    - biến
+    - phắn
+    - ra chỗ khác chơi
+    - không cần mày nữa
 
 - intent: affirm
   examples: |
@@ -39,17 +56,30 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - đúng rồi
+    - được đó
+    - chuẩn
+    - đúng
+    - hoàn hảo
 
 - intent: deny
   examples: |
     - no
+    - no no
     - n
     - never
     - I don't think so
     - don't like that
     - no way
     - not really
+    - không
+    - không đúng
+    - sai rồi
+    - sai rồi nhé
+    - sai bét
+    - sai hết chỗ nói
 
+# customer mood
 - intent: mood_great
   examples: |
     - perfect
@@ -66,6 +96,13 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - được của ló
+    - được của nó
+    - tuyệt vời
+    - hoàn hảo
+    - kin kin
+    - kinh kinh
+    - giỏi ghê
 
 - intent: mood_unhappy
   examples: |
@@ -83,13 +120,39 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+    - ngu bò
+    - ngu
+    - mài ngu ngư bò
+    - mài ngu bò
+    - mài ngu không khác gì con bò
+    - ngu lắm
+    - thất vọng
+    - tau buồn vì mài lắm
+    - buồn qué
+    - không thích
 
+- intent: mood_lament
+  examples: |
+    - m thấy t béo không?
+    - lại phải ăn à
+    - có cách nào không ăn mà vẫn không đói không
+    - t chán ăn
+    - lăn được mất
+    - tôi không biết nấu gì cả
+    - tôi buồn quá
+    - tôi vui quá
+
+# feature: bot info
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - bạn có phải bot không?
+    - tôi đang nói chuyện với bot phải không?
+    - bạn có phải là người không?
+    - có thật bạn là bot không?
 
 - intent: ask_bot_ability
   examples: |
@@ -98,3 +161,99 @@ nlu:
     - hãy cho tôi biết bạn có thể làm gì?
     - khả năng của bot là gì?
     - bot có thể làm gì?
+    - cho tao biết mài có thể làm gì?
+    - cho tao biết m làm được gì?
+    - m có thể làm gì?
+    - bot có thể làm gì?
+    - mướn m để làm gì?
+    - thuê m để làm gì?
+
+- intent: ask_bot_name
+  examples: |
+    - m tên là gì?
+    - bot tên là gì nhỉ?
+    - cho tao biết mày tên là gì?
+    - tên mày là gì?
+    - bot có tên là gì?
+    - chủ của m đặt tên của mày là gì?
+    - what's your name?
+    - your's name?
+    - em tên là gì
+    - tên gì
+
+# bot ability
+- intent: ask_time
+  examples: |
+    - mấy giờ rồi?
+    - bot bây giờ là mấy giờ?
+    - cho tao biết h là mấy giờ?
+    - what time is this?
+    - what time?
+    - mấy giờ
+    - now
+    - giờ hiện tại
+
+- intent: ask_now_session
+  examples: |
+    - hiện giờ đang là mùa gì?
+    - bây giờ là mùa gì nhỉ?
+    - m biết giờ là mùa gì không?
+    - bot biết đang là mùa gì không?
+    - mùa gì mà nóng vậy
+    - mùa gì mà lạnh vậy
+    - mùa gì mà nóng lạnh thất thường
+    - what session
+
+- intent: ask_now_weather
+  examples: |
+    - thời tiết nay thế nào
+    - thời tiết hiện tại thế nào
+    - ngoài trời bao nhiêu độ
+    - trời có lạnh không
+    - cho tao biết nay bao nhiêu độ vậy
+    - thời tiết lạnh không?
+    - thời tiết nóng không?
+
+- intent: ask_suggest_food
+  examples: |
+    - cho tao một món đi
+    - m biết món nào ngon không
+    - ăn gì được nhỉ
+    - ăn chi
+    - t có thể ăn gig?
+    - nên ăn gì được nhỉ?
+    - ăn gì
+    - tiểu nhị cho món
+    - suggest cho món nào
+    - thời tiết thế này ăn gì được nhỉ
+    - nên ăn gì
+
+- intent: ask_food_link
+  examples: |
+    - xin link
+    - cho t xin link
+    - link đâu
+    - book link nào
+    - đặt linh nào
+    - gửi cho t link
+    - app nào
+
+- intent: ask_cook_food
+  examples: |
+    - nấu như nào
+    - mấu món này như nào
+    - công thức như nào
+    - xin bí quyết nấu
+    - t không biết nấu món này, m biết nấu không?
+
+- intent: ask_food_other
+  examples: |
+    - cho món khác
+    - tiểu nhị cho món khác
+    - coi món khác
+    - món khác nào
+    - món khác
+    - không, cho món khác
+    - next
+    - món tiếp
+    - tiếp, tau chưa ưng
