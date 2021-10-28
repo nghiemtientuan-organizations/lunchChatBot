@@ -14,6 +14,7 @@ Framework: Rasa.
 
 # 3. Run with docker
 ```
+    cp .env.example .env
     docker-compose up -d
     docker exec -it lunch_rasa sh
     rasa train

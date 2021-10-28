@@ -14,18 +14,33 @@ services:
   app:
     depends_on:
       - rasa
-    build: .
-    container_name: app_lunch_rasa_action
+    build: ..
+    container_name: lunch_rasa_action
     restart: unless-stopped
     command: ["start", "--actions", "actions", "-vv"]
     expose:
-      - '5055'
+      - "5055"
     ports:
       - "5055:5055"
     volumes:
       - ./actions:/app/actions
     networks:
       - rasa-network
+
+  rasa-x:
+    depends_on:
+      - rasa
+    image: rasa/rasa-x:0.40.0
+    container_name: lunch_rasa_x
+    restart: unless-stopped
+    environment:
+      RASA_X_PASSWORD: ${RASA_X_PASSWORD}
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./:/app
+      - ./models:/app/models
+    command: rasa x --no-prompt --endpoints endpoints.yml --port 5005 --cors "*" --debug
 
 networks:
   rasa-network:
