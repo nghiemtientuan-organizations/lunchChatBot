@@ -8,33 +8,35 @@ Language: Python 3.
 Framework: Rasa.
 
 # 2. Prerequisites
+- docker & docker-compose
+
+OR
+
 - make ```sudo apt install make```
 - python3-dev python3-pip ```sudo apt install python3-dev python3-pip```
 - Python >= 3.8
 
-# 3. Run with docker
+# 3. Document
+- [Rasa](https://rasa.com/docs/rasa/installation)
+- [Rasa X](https://rasa.com/docs/rasa-x/installation-and-setup/install/docker-compose)
+
+# 4. Installation
+## Option 1: Run with docker
 ```
     cp .env.example .env
     docker-compose up -d
-    docker exec -it lunch_rasa sh
-    rasa train
-    exit
 ```
-
-Access link: http://localhost:5002
 
 Change folder permission
 ```
-    sudo chmod 777 models events.db* rasa.db*
-    sudo chown ${USER}:root models events.db* rasa.db*
-    docker stop $(docker ps -aq)
+    sudo chgrp -R root ./*
+    sudo chmod 777 -R models
+    docker-compose stop
     docker-compose up -d
 ```
 
-# 4. Documents:
-- [Rasa](https://rasa.com/docs/rasa/installation/)
+## Option 2: Install immediate to PC
 
-# 5. Install immediate to PC
 - Install the requirements inside of a Python virtualenv (recommend)
 ```BASH
     pip install virtualenv
@@ -59,7 +61,16 @@ terminal 2 - UI (http://localhost:5005)
     rasa x
 ```
 
-# 6. Example rasa commands
+Access link: [](http://localhost:5002)
+
+# 5. Example rasa commands
+(If use docker) Exec to docker
+``
+    docker exec -it lunch_rasa sh
+    rasa train
+    exit
+``
+
 - Train nlu and run in shell
 ```BASH
     rasa train nlu
@@ -82,4 +93,9 @@ terminal 2 - UI (http://localhost:5005)
 - To deactivate
 ```
 deactivate
+```
+
+# 6. Debug
+```
+    docker-compose logs
 ```
