@@ -5,9 +5,13 @@ services:
     image: rasa/rasa:2.6.0-full
     container_name: lunch_rasa
     restart: unless-stopped
+    expose:
+      - "5005"
+    ports:
+      - "5005:5005"
     volumes:
       - ./:/app
-    command: ["run", "--enable-api", "--cors", " \"*\"", "--verbose"]
+    command: ["run", "-m", "models", "--enable-api", "--cors", "\"*\"", "--debug"]
     networks:
       - rasa-network
 
@@ -33,6 +37,8 @@ services:
     image: rasa/rasa-x:0.40.0
     container_name: lunch_rasa_x
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       RASA_X_PASSWORD: ${RASA_X_PASSWORD}
     ports:
@@ -41,6 +47,23 @@ services:
       - ./:/app
       - ./models:/app/models
     command: rasa x --no-prompt --endpoints endpoints.yml --port 5005 --cors "*" --debug
+    networks:
+      - rasa-network
+
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: lunch_rasa_webview
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "5000:80"
+    volumes:
+      - ./views:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker/nginx/log:/var/log/nginx/
+    networks:
+      - rasa-network
 
 networks:
   rasa-network:

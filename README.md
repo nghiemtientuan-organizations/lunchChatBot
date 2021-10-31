@@ -92,7 +92,13 @@ Access link: [](http://localhost:5002)
 
 - To deactivate
 ```
-deactivate
+    deactivate
+```
+
+- To test connect to rasa server
+```
+    curl --request POST 'http://localhost:5005/webhooks/rest/webhook' \
+    --data '{"sender":"Test","message":"hi"}'
 ```
 
 # 6. Debug
