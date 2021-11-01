@@ -43,26 +43,48 @@ entities: []
 slots: {}
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: Chào bạn
+  - text: Chào bạn, tôi có thể giúp gì cho bạn được nhỉ?
+  - text: Hãy nói điều bạn cần nào
+  - text: Rất vui được nói chuyện với bạn
   utter_bot_challenge:
-  - text: Đúng tôi là bot bạn ạ. Bạn có thể thử hehe
+  - text: Đúng tôi là bot bạn ạ. Bạn có thể thử hehe.
+  - text: Tôi là bot nhé.
+  - text: Thế bạn nghĩ có người đứng sau trả lời bạn thường xuyên à.
+  - text: Yes. Tôi có thể trả lời bạn mọi lúc mọi nơi.
   utter_bot_ability:
-  - text: Tôi có thể làm những công việc sau:\n1. Trò chuyện với bạn.\n2. Hỏi thời gian, mùa hiện tại, thời tiết hiện tại.\n3. Gợi ý món.\n4. Tìm cách nấu
+  - text: |-
+      Tôi có thể làm những công việc sau: 
+      1. Trò chuyện với bạn. 
+      2. Hỏi thời gian, mùa hiện tại, thời tiết hiện tại. 
+      3. Gợi ý món. 
+      4. Tìm cách nấu
   utter_bot_name:
-  - text: Tôi tên là TunPhun
-  utter_cheer_up:
-  - image: https://i.imgur.com/nGF1K8f.jpg
-    text: 'Here is something to cheer you up:'
-  utter_did_that_help:
-  - text: Did that help you?
+  - text: Tôi tên là TunPhun.
+  - text: TunPhun là tên của tôi.
+  - text: Bạn có thể gọi tên là TunPhun.
+  - text: TunPhun bạn nhé!
+  - text: TunPhun
   utter_happy:
-  - text: Great, carry on!
+  - text: Bạn vui thì tôi cũng vui rồi.
+  - text: Lan tỏa sự "Vui" đến với tôi đi.
   utter_goodbye:
-  - text: Bye
-  utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - image: https://picsum.photos/200/300
+    text: Chào
+  - image: https://picsum.photos/200/300
+    text: Tạm biệt bạn, hy vọng tôi có thể giúp ích được cho bạn.
+  - image: https://picsum.photos/200/300
+    text: Hẹn bạn vào lần sau nhé.
+  - image: https://picsum.photos/200/300
+    text: Bye, lần tới tôi hứa sẽ thông minh hơn.
   utter_fallback:
+  - text: Hiện tại tôi chưa được dạy, nhưng tôi sẽ quay lại thông minh hơn để trả lời câu này.
+  - text: Tôi chưa hiểu ý bạn. Tôi sẽ học tập thêm.
+  - text: Vấn đề này có vẻ khó. Để tôi đi hỏi boss rồi lần tới tôi sẽ trả lời bạn nhé.
+  - text: Chịu. Tôi chưa hiều bạn nói. Để tôi học tập thêm nhé.
+  - text: Tôi không hiểu.
   - text: I don't know
+  - text: I don't understand
 actions:
 - utter_greet
 - utter_cheer_up
@@ -74,7 +96,8 @@ actions:
 - action_get_date
 - action_get_season
 - action_get_temperature
-- action_get_food
+- action_get_suggest_food
+- action_get_food_link
 - action_how_to_cook_food
 forms: {}
 e2e_actions: []

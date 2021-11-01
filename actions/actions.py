@@ -84,6 +84,7 @@ class ActionGetSeason(Action):
 
         return []
 
+
 # action get temperature info
 class ActionGetTemperature(Action):
     def name(self) -> Text:
@@ -98,18 +99,34 @@ class ActionGetTemperature(Action):
 
         return []
 
+
 # action get food
-class ActionGetFood(Action):
+class ActionGetSuggestFood(Action):
     def name(self) -> Text:
-        return 'action_get_food'
+        return 'action_get_suggest_food'
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         # get food here
-        dispatcher.utter_message(text='response temperature here')
+        dispatcher.utter_message(text='response suggest food here')
 
         return []
+
+
+# action get food link
+class ActionGetFoodLink(Action):
+    def name(self) -> Text:
+        return 'action_get_food_link'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # get food here
+        dispatcher.utter_message(text='response food link here')
+
+        return []
+
 
 # action how to cook food
 class ActionHowToCookFood(Action):
@@ -120,6 +137,6 @@ class ActionHowToCookFood(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         # action find cook food here
-        dispatcher.utter_message(text='response temperature here')
+        dispatcher.utter_message(text='response how to cook food here')
 
         return []

@@ -1,14 +1,55 @@
 version: "2.0"
-
 stories:
-
-- story: example
+- story: greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+- story: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- story: ask bot name
+  steps:
+  - intent: ask_bot_name
+  - action: utter_bot_name
+- story: ask bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+- story: ask bot ability
+  steps:
+  - intent: ask_bot_ability
+  - action: utter_bot_ability
+- story: ask time
+  steps:
+  - intent: ask_time
+  - action: action_get_date
+- story: ask now session
+  steps:
+  - intent: ask_now_session
+  - action: action_get_season
+- story: ask now temperature
+  steps:
+  - intent: ask_now_weather
+  - action: action_get_temperature
+- story: ask suggest food
+  steps:
+  - intent: ask_suggest_food
+  - action: action_get_suggest_food
+- story: greeting and goodbye
   steps:
   - intent: greet
   - action: utter_greet
   - intent: goodbye
   - action: utter_goodbye
-
+- story: greeting, botname goodbye
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_bot_name
+  - action: utter_bot_name
+  - intent: goodbye
+  - action: utter_goodbye
 - story: ask time
   steps:
   - intent: greet
@@ -17,7 +58,6 @@ stories:
   - action: action_get_date
   - intent: goodbye
   - action: utter_goodbye
-
 - story: ask time and bot challage
   steps:
   - intent: greet
@@ -28,7 +68,6 @@ stories:
   - action: utter_bot_challenge
   - intent: goodbye
   - action: utter_goodbye
-
 - story: ask bot challage
   steps:
   - intent: greet
@@ -37,7 +76,6 @@ stories:
   - action: utter_bot_challenge
   - intent: goodbye
   - action: utter_goodbye
-
 - story: ask bot info
   steps:
   - intent: greet
@@ -48,5 +86,9 @@ stories:
   - action: utter_bot_challenge
   - intent: ask_bot_ability
   - action: utter_bot_ability
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Story from Conversation ID bd6601a6efd64427b9c87959013669a6
+  steps:
   - intent: goodbye
   - action: utter_goodbye
