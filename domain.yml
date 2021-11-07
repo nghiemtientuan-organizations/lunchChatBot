@@ -60,11 +60,11 @@ responses:
       3. Gợi ý món. 
       4. Tìm cách nấu
   utter_bot_name:
-  - text: Tôi tên là TunPhun.
-  - text: TunPhun là tên của tôi.
-  - text: Bạn có thể gọi tên là TunPhun.
-  - text: TunPhun bạn nhé!
-  - text: TunPhun
+  - text: Tôi tên là Bánh bao.
+  - text: Bánh bao là tên của tôi.
+  - text: Bạn có thể gọi tên là Bánh Bao.
+  - text: Bánh bao bạn nhé!
+  - text: Bánh bao nha.
   utter_happy:
   - text: Bạn vui thì tôi cũng vui rồi.
   - text: Lan tỏa sự "Vui" đến với tôi đi.
@@ -83,8 +83,6 @@ responses:
   - text: Vấn đề này có vẻ khó. Để tôi đi hỏi boss rồi lần tới tôi sẽ trả lời bạn nhé.
   - text: Chịu. Tôi chưa hiều bạn nói. Để tôi học tập thêm nhé.
   - text: Tôi không hiểu.
-  - text: I don't know
-  - text: I don't understand
 actions:
 - utter_greet
 - utter_cheer_up
@@ -93,11 +91,13 @@ actions:
 - utter_goodbye
 - utter_iamabot
 - utter_fallback
+- action_session_start
 - action_get_date
 - action_get_season
 - action_get_temperature
 - action_get_suggest_food
 - action_get_food_link
 - action_how_to_cook_food
+- ask_suggest_food
 forms: {}
 e2e_actions: []

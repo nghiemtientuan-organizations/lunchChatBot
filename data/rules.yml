@@ -6,8 +6,14 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+  - action: action_session_start
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
-  - action: utter_iamabot
+  - action: utter_bot_challenge
+
+- rule: Say bot name anytime the user ask bot name
+  steps:
+  - intent: ask_bot_name
+  - action: utter_bot_name

@@ -11,7 +11,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
 
-# sqliteConnection = sqlite3.connect('chatbot.db')
+# sqliteConnection = sqlite3.connect('../db/foods.db')
 # cursor = sqliteConnection.cursor()
 # print("Database created and Successfully Connected")
 
@@ -45,20 +45,6 @@ def now_season():
     return switcher.get(int(month), seasons_name[0])
 
 
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-
-
 # action get date info
 class ActionGetDate(Action):
     def name(self) -> Text:
@@ -67,7 +53,8 @@ class ActionGetDate(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(text=now.strftime('%d/%m/%Y %H:%M:%S'))
+        dispatcher.utter_message(text=now.strftime('Bây giờ là: %H:%M. Ngày %d/%m/%Y'))
+        dispatcher.utter_message(text=now.strftime('Ngày %d/%m/%Y'))
 
         return []
 
