@@ -66,8 +66,10 @@ services:
     container_name: lunch_rasa_webview
     restart: unless-stopped
     tty: true
+    env_file:
+      - .env
     ports:
-      - "5000:80"
+      - "${APP_LANDING_PAGE_PORT:-5000}:80"
     volumes:
       - ./views:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/

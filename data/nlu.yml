@@ -7,6 +7,8 @@ nlu:
 - intent: greet
   examples: |
     - hey
+    - hey, bánh bao
+    - hey Banh bao
     - hey bot
     - hello
     - hi
