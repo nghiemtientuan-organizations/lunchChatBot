@@ -10,6 +10,10 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted, EventType
+
 
 # sqliteConnection = sqlite3.connect('../db/foods.db')
 # cursor = sqliteConnection.cursor()
@@ -127,3 +131,29 @@ class ActionHowToCookFood(Action):
         dispatcher.utter_message(text='response how to cook food here')
 
         return []
+
+
+# action restart story
+class ActionRefreshStory(Action):
+    def name(self) -> Text:
+        return 'action_refresh_story'
+
+    @staticmethod
+    def fetch_slots(tracker: Tracker) -> List[EventType]:
+        """Collect slots that contain the user's name and phone number."""
+
+        slots = []
+        for key in ("name", "phone_number"):
+            value = tracker.get_slot(key)
+            if value is not None:
+                slots.append(SlotSet(key=key, value=value))
+        return slots
+
+    async def run(
+      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        # the session should begin with a `session_started` event
+        events = [SessionStarted()]
+
+        return events
