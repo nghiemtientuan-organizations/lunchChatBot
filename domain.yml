@@ -91,7 +91,7 @@ actions:
 - utter_goodbye
 - utter_iamabot
 - utter_fallback
-- action_session_start
+- action_refresh_story
 - action_get_date
 - action_get_season
 - action_get_temperature
