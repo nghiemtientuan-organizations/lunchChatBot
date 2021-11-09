@@ -183,6 +183,21 @@ nlu:
     - em tên là gì
     - tên gì
 
+- intent: ask_bot_author_name
+  examples: |
+    - ai làm ra m?
+    - chủ của bot là ai nhỉ?
+    - chủ của m là ai?
+    - ai dựng lên mày?
+    - ai code ra mày?
+    - ai sinh ra mày?
+    - chủ của m chắc giỏi lắm?
+    - ai đã tạo ra m
+    - cho t biết ai đã tạo ra m
+    - cho t biết ai đã code ra m
+    - your boss?
+    - who is your boss?
+
 # bot ability
 - intent: ask_time
   examples: |
@@ -215,6 +230,8 @@ nlu:
     - cho tao biết nay bao nhiêu độ vậy
     - thời tiết lạnh không?
     - thời tiết nóng không?
+    - bao nhiêu độ
+    - hiện tại bao nhiêu độ
 
 - intent: ask_suggest_food
   examples: |

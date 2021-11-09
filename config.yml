@@ -40,3 +40,4 @@ policies:
     nlu_threshold: 0.6
     core_threshold: 0.3
     fallback_action_name: 'utter_fallback'
+  - name: RulePolicy

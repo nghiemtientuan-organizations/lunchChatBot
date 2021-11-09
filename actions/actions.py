@@ -14,7 +14,6 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted, EventType
 
-
 # sqliteConnection = sqlite3.connect('../db/foods.db')
 # cursor = sqliteConnection.cursor()
 # print("Database created and Successfully Connected")
@@ -28,6 +27,9 @@ seasons_name = [
     'mùa đông',
 ]
 weather_org_url = 'https://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=1cefc1d741a0e2bc1ce1728e91d651ec'
+default_cold_temp = 25
+default_warm_temp = 30
+default_hot_temp = 35
 
 
 def now_season():
@@ -49,6 +51,21 @@ def now_season():
     return switcher.get(int(month), seasons_name[0])
 
 
+def kel_to_cel(kelvin):
+    return float(kelvin) - 273.15
+
+
+def get_temp():
+    try:
+        response = requests.get(weather_org_url)
+        data_json = response.json()
+        main_data = data_json['main']
+
+        return main_data['temp']
+    except Exception:
+        return None
+
+
 # action get date info
 class ActionGetDate(Action):
     def name(self) -> Text:
@@ -57,8 +74,8 @@ class ActionGetDate(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(text=now.strftime('Bây giờ là: %H:%M. Ngày %d/%m/%Y'))
-        dispatcher.utter_message(text=now.strftime('Ngày %d/%m/%Y'))
+        dispatcher.utter_message(text=now.strftime('Bây giờ là: %H:%M.'))
+        dispatcher.utter_message(text=now.strftime('Ngày %d/%m/%Y.'))
 
         return []
 
@@ -71,7 +88,7 @@ class ActionGetSeason(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(text=now_season())
+        dispatcher.utter_message(text='Hiện tại là mùa {session}'.format(session=now_season()))
 
         return []
 
@@ -84,9 +101,32 @@ class ActionGetTemperature(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        response = requests.get(weather_org_url)
-        print(response)
-        dispatcher.utter_message(text='response temperature here')
+        try:
+            response = requests.get(weather_org_url)
+            data_json = response.json()
+            main_data = data_json['main']
+            temp, temp_min, temp_max = \
+                kel_to_cel(main_data['temp']), kel_to_cel(main_data['temp_min']), kel_to_cel(main_data['temp_max'])
+            win_data = data_json['wind']
+
+            # response info
+            dispatcher.utter_message(text='Theo tôi biết hiện tại đang là {} độ.'.format(temp))
+            if temp_min != temp_max:
+                dispatcher.utter_message(text='Cao nhất {} - thấp nhất {}.'.format(temp_min, temp_max))
+            dispatcher.utter_message(
+                text='Tốc độ gió là {} km/h, độ ẩm {}%'.format(win_data['speed'], main_data['humidity'])
+            )
+
+            # response bot's feel
+            if temp <= default_cold_temp:
+                dispatcher.utter_message(text='Trời lạnh thật, trời này mà ăn bát gì đó ấm ấm thì tuyệt cú mèo.')
+            elif temp >= default_hot_temp:
+                dispatcher.utter_message(text='Thời tiết nóng nhỉ, làm chút gì đó mát mát nào vừa thanh lọc cơ thể.')
+            else:
+                dispatcher.utter_message(text='Thời tiết này ăn gì cũng ngon.')
+        except Exception:
+            dispatcher.utter_message(
+                text='Hiên tại tôi đang không lấy được dữ liệu về thời tiết. Phiền bạn thử lại sau.')
 
         return []
 
@@ -150,7 +190,7 @@ class ActionRefreshStory(Action):
         return slots
 
     async def run(
-      self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+            self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
 
         # the session should begin with a `session_started` event
