@@ -5,11 +5,6 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-- story: goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask bot name
   steps:
   - intent: ask_bot_name
@@ -40,31 +35,18 @@ stories:
   - action: action_get_suggest_food
 
 # Mix
-- story: greeting and goodbye
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: greeting, botname goodbye
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_bot_name
   - action: utter_bot_name
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask time
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_time
   - action: action_get_date
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask time and bot challage
   steps:
   - intent: greet
@@ -73,18 +55,12 @@ stories:
   - action: action_get_date
   - intent: bot_challenge
   - action: utter_bot_challenge
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask bot challage
   steps:
   - intent: greet
   - action: utter_greet
   - intent: bot_challenge
   - action: utter_bot_challenge
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask bot info
   steps:
   - intent: greet
@@ -95,9 +71,6 @@ stories:
   - action: utter_bot_challenge
   - intent: ask_bot_ability
   - action: utter_bot_ability
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask food name
   steps:
   - intent: greet
@@ -110,9 +83,6 @@ stories:
   - action: utter_bot_ability
   - intent: ask_suggest_food
   - action: action_get_suggest_food
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask food name and other food
   steps:
   - intent: greet
@@ -141,9 +111,6 @@ stories:
   - action: action_get_suggest_food
   - intent: ask_food_link
   - action: action_get_food_link
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask food name and cook
   steps:
   - intent: greet
@@ -158,9 +125,6 @@ stories:
   - action: action_get_suggest_food
   - intent: ask_cook_food
   - action: action_how_to_cook_food
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
 - story: ask food name, link and cook
   steps:
   - intent: greet
@@ -177,6 +141,3 @@ stories:
   - action: action_get_food_link
   - intent: ask_cook_food
   - action: action_how_to_cook_food
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story

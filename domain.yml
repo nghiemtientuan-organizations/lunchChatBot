@@ -39,6 +39,8 @@ intents:
     use_entities: true
 - ask_now_weather:
     use_entities: true
+- ask_bot_author_name:
+    use_entities: true
 entities: []
 slots: {}
 responses:
