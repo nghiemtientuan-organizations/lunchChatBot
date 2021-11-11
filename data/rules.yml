@@ -17,3 +17,8 @@ rules:
   steps:
   - intent: ask_bot_name
   - action: utter_bot_name
+
+- rule: greeting
+  steps:
+  - intent: greet
+  - action: utter_greet

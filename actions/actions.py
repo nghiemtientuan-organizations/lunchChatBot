@@ -5,18 +5,19 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 import sqlite3
+import random
+
 import requests
-from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted, EventType
+from rasa_sdk.events import SlotSet, SessionStarted, EventType
+from rasa_sdk.events import Restarted
 
-# sqliteConnection = sqlite3.connect('../db/foods.db')
-# cursor = sqliteConnection.cursor()
-# print("Database created and Successfully Connected")
+sqliteConnection = sqlite3.connect('./db/foods.db')
+cursor = sqliteConnection.cursor()
+print("[Action][DB][Foods] Databases Connected Successfully")
 
 now = datetime.now()
 month = now.strftime('%m')
@@ -197,3 +198,27 @@ class ActionRefreshStory(Action):
         events = [SessionStarted()]
 
         return events
+
+
+# action default fallback
+class ActionDefaultFallback(Action):
+    def name(self) -> Text:
+        return 'action_default_fallback'
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        response = [
+            'Hiện tại tôi chưa được dạy, nhưng tôi sẽ quay lại thông minh hơn để trả lời câu này.',
+            'Tôi chưa hiểu ý bạn. Tôi sẽ học tập thêm.',
+            'Vấn đề này có vẻ khó. Để tôi đi hỏi boss rồi lần tới tôi sẽ trả lời bạn nhé.',
+            'Chịu. Tôi chưa hiều bạn nói. Để tôi học tập thêm nhé.',
+            'Tôi không hiểu.',
+        ]
+        dispatcher.utter_message(text=random.choice(response))
+
+        # Revert user message which led to fallback.
+        return [Restarted()]

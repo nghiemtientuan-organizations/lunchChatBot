@@ -79,12 +79,6 @@ responses:
     text: Hẹn bạn vào lần sau nhé.
   - image: https://picsum.photos/200/300
     text: Bye, lần tới tôi hứa sẽ thông minh hơn.
-  utter_fallback:
-  - text: Hiện tại tôi chưa được dạy, nhưng tôi sẽ quay lại thông minh hơn để trả lời câu này.
-  - text: Tôi chưa hiểu ý bạn. Tôi sẽ học tập thêm.
-  - text: Vấn đề này có vẻ khó. Để tôi đi hỏi boss rồi lần tới tôi sẽ trả lời bạn nhé.
-  - text: Chịu. Tôi chưa hiều bạn nói. Để tôi học tập thêm nhé.
-  - text: Tôi không hiểu.
 actions:
 - utter_greet
 - utter_cheer_up
@@ -92,7 +86,7 @@ actions:
 - utter_happy
 - utter_goodbye
 - utter_iamabot
-- utter_fallback
+- action_default_fallback
 - action_refresh_story
 - action_get_date
 - action_get_season
