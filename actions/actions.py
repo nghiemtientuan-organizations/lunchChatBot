@@ -28,21 +28,21 @@ seasons_name = [
 ]
 weather_org_url = 'https://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=1cefc1d741a0e2bc1ce1728e91d651ec'
 
+# Food temp 25-35 define
+COLD_TEMP = 0       # < 25
+MEDIUM_TEMP = 1     # 25 <= ... <= 35
+HOT_TEMP = 2        # > 35
 default_cold_temp = 25
 default_hot_temp = 35
 
-default_low_humidity = 0    # 80%
-default_high_humidity = 1
+# Humidity
+MEDIUM_HUMIDITY = 80
+DRY_FOOD = 0    # >= 80%
+WATER_FOOD = 1  # < 80%
 
-# Food temp 25-35 define
-COLD_TEMP = 0
-MEDIUM_TEMP = 1
-HOT_TEMP = 2
-
-# Food humidity define
-DRY_HUMIDITY = 0    # MON KHO
-MOIST_HUMIDITY = 1  # MON AM
-WATER_HUMIDITY = 2  # MON NUOC
+# Food type
+FOOD_TYPE = 1
+DRINk_TYPE = 2
 
 
 def now_season():
@@ -151,7 +151,11 @@ class ActionGetSuggestFood(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        food_sql = "SELECT * FROM foods "
+        # connect to db to get all foods
+        sqlite_connection = sqlite3.connect(DB_FOOD_PATH)
+        cursor = sqlite_connection.cursor()
+        print("[Action][DB][Foods] Databases Connected Successfully")
+        food_sql = "SELECT * FROM foods WHERE type = {} ".format(FOOD_TYPE)
 
         # get now temp & doAm
         temp = kel_to_cel(get_temp()['temp'])
@@ -159,25 +163,31 @@ class ActionGetSuggestFood(Action):
         print("[Action][Temp] temp: {}, humidity: {}%".format(temp, humidity))
         if temp < default_cold_temp:
             # get hot food
-            food_sql += "WHERE "
+            food_sql += "AND temperature_type = {} ".format(HOT_TEMP)
         elif temp > default_hot_temp:
-            temp_type = 1
+            # get medium temp food
+            food_sql += "AND temperature_type = {} ".format(MEDIUM_TEMP)
+        else:
+            # get medium and hot temp food
+            food_sql += "AND temperature_type >= {} ".format(MEDIUM_TEMP)
 
-        # connect to db to get all foods
-        sqlite_connection = sqlite3.connect(DB_FOOD_PATH)
-        cursor = sqlite_connection.cursor()
-        print("[Action][DB][Foods] Databases Connected Successfully")
-        cursor.execute("SELECT * FROM foods")
+        if humidity < MEDIUM_HUMIDITY:
+            food_sql += "AND humidity_type = {} ".format(WATER_FOOD)
+
+        food_sql += "WHERE delivery_rating >= 4 ORDER BY delivery_rating DESC"
+        print("[Action][DB][Foods][SQL] RUN {}".format(food_sql))
+        cursor.execute(food_sql)
         foods = cursor.fetchall()
         print("[Action][DB][Foods] Get foods success")
         sqlite_connection.close()
 
-        # make decision table
-        # for index, food in enumerate(foods):
-        #     new_humidity_type =
+        # haven't food
+        if len(foods) == 0:
+            dispatcher.utter_message(text='Hiện tại tôi không tìm được món nào phù hợp, để tôi tìm thêm nhé!')
+            return [Restarted()]
 
-        # get best food
-        # response food here
+        # get best food by random
+        food_index = random.randint(0, len(foods))
         dispatcher.utter_message(text='response suggest food here')
 
         return []
