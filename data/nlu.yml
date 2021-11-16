@@ -247,16 +247,6 @@ nlu:
     - thời tiết thế này ăn gì được nhỉ
     - nên ăn gì
 
-- intent: ask_food_link
-  examples: |
-    - xin link
-    - cho t xin link
-    - link đâu
-    - book link nào
-    - đặt linh nào
-    - gửi cho t link
-    - app nào
-
 - intent: ask_cook_food
   examples: |
     - nấu như nào

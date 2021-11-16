@@ -31,8 +31,6 @@ intents:
     use_entities: true
 - ask_suggest_food:
     use_entities: true
-- ask_food_link:
-    use_entities: true
 - ask_cook_food:
     use_entities: true
 - ask_food_other:
@@ -92,7 +90,6 @@ actions:
 - action_get_season
 - action_get_temperature
 - action_get_suggest_food
-- action_get_food_link
 - action_how_to_cook_food
 - ask_suggest_food
 forms: {}
