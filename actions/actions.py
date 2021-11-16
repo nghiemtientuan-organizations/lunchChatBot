@@ -15,9 +15,8 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, SessionStarted, EventType
 from rasa_sdk.events import Restarted
 
-sqliteConnection = sqlite3.connect('./db/foods.db')
-cursor = sqliteConnection.cursor()
-print("[Action][DB][Foods] Databases Connected Successfully")
+# foods db
+DB_FOOD_PATH = './db/foods.db'
 
 now = datetime.now()
 month = now.strftime('%m')
@@ -28,9 +27,22 @@ seasons_name = [
     'mùa đông',
 ]
 weather_org_url = 'https://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=1cefc1d741a0e2bc1ce1728e91d651ec'
+
 default_cold_temp = 25
-default_warm_temp = 30
 default_hot_temp = 35
+
+default_low_humidity = 0    # 80%
+default_high_humidity = 1
+
+# Food temp 25-35 define
+COLD_TEMP = 0
+MEDIUM_TEMP = 1
+HOT_TEMP = 2
+
+# Food humidity define
+DRY_HUMIDITY = 0    # MON KHO
+MOIST_HUMIDITY = 1  # MON AM
+WATER_HUMIDITY = 2  # MON NUOC
 
 
 def now_season():
@@ -60,9 +72,8 @@ def get_temp():
     try:
         response = requests.get(weather_org_url)
         data_json = response.json()
-        main_data = data_json['main']
 
-        return main_data['temp']
+        return data_json['main']
     except Exception:
         return None
 
@@ -140,7 +151,33 @@ class ActionGetSuggestFood(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # get food here
+        food_sql = "SELECT * FROM foods "
+
+        # get now temp & doAm
+        temp = kel_to_cel(get_temp()['temp'])
+        humidity = get_temp()['humidity']
+        print("[Action][Temp] temp: {}, humidity: {}%".format(temp, humidity))
+        if temp < default_cold_temp:
+            # get hot food
+            food_sql += "WHERE "
+        elif temp > default_hot_temp:
+            temp_type = 1
+
+        # connect to db to get all foods
+        sqlite_connection = sqlite3.connect(DB_FOOD_PATH)
+        cursor = sqlite_connection.cursor()
+        print("[Action][DB][Foods] Databases Connected Successfully")
+        cursor.execute("SELECT * FROM foods")
+        foods = cursor.fetchall()
+        print("[Action][DB][Foods] Get foods success")
+        sqlite_connection.close()
+
+        # make decision table
+        # for index, food in enumerate(foods):
+        #     new_humidity_type =
+
+        # get best food
+        # response food here
         dispatcher.utter_message(text='response suggest food here')
 
         return []
