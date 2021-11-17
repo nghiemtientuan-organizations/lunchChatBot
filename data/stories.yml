@@ -77,6 +77,96 @@ stories:
   - action: utter_bot_ability
   - intent: ask_suggest_food
   - action: action_get_suggest_food
+- story: ask food name, loop
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name 1,2, cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name 1,2,3 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name 1,2,3,4 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name, other
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+- story: ask food name, other, cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name, other 1,2
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+- story: ask food name, other 1,2 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name, other 1,2,3
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+- story: ask food name, other 1,2,3 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
 - story: ask food name and other food
   steps:
   - intent: ask_bot_name
@@ -89,18 +179,6 @@ stories:
   - action: action_get_suggest_food
   - intent: ask_food_other
   - action: ask_suggest_food
-- story: ask food name and link
-  steps:
-  - intent: ask_bot_name
-  - action: utter_bot_name
-  - intent: bot_challenge
-  - action: utter_bot_challenge
-  - intent: ask_bot_ability
-  - action: utter_bot_ability
-  - intent: ask_suggest_food
-  - action: action_get_suggest_food
-  - intent: ask_food_link
-  - action: action_get_food_link
 - story: ask food name and cook
   steps:
   - intent: ask_bot_name
@@ -111,19 +189,5 @@ stories:
   - action: utter_bot_ability
   - intent: ask_suggest_food
   - action: action_get_suggest_food
-  - intent: ask_cook_food
-  - action: action_how_to_cook_food
-- story: ask food name, link and cook
-  steps:
-  - intent: ask_bot_name
-  - action: utter_bot_name
-  - intent: bot_challenge
-  - action: utter_bot_challenge
-  - intent: ask_bot_ability
-  - action: utter_bot_ability
-  - intent: ask_suggest_food
-  - action: action_get_suggest_food
-  - intent: ask_food_link
-  - action: action_get_food_link
   - intent: ask_cook_food
   - action: action_how_to_cook_food

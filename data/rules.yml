@@ -4,21 +4,26 @@ rules:
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
-  - action: action_refresh_story
+    - intent: goodbye
+    - action: utter_goodbye
+    - action: action_refresh_story
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
-  - intent: bot_challenge
-  - action: utter_bot_challenge
+    - intent: bot_challenge
+    - action: utter_bot_challenge
 
 - rule: Say bot name anytime the user ask bot name
   steps:
-  - intent: ask_bot_name
-  - action: utter_bot_name
+    - intent: ask_bot_name
+    - action: utter_bot_name
 
 - rule: greeting
   steps:
-  - intent: greet
-  - action: utter_greet
+    - intent: greet
+    - action: utter_greet
+
+- rule: suggest food
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food

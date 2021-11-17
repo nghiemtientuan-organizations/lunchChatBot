@@ -174,7 +174,7 @@ class ActionGetSuggestFood(Action):
         if humidity < MEDIUM_HUMIDITY:
             food_sql += "AND humidity_type = {} ".format(WATER_FOOD)
 
-        food_sql += "WHERE delivery_rating >= 4 ORDER BY delivery_rating DESC"
+        food_sql += "AND delivery_rating >= 4 ORDER BY delivery_rating DESC"
         print("[Action][DB][Foods][SQL] RUN {}".format(food_sql))
         cursor.execute(food_sql)
         foods = cursor.fetchall()
@@ -188,23 +188,35 @@ class ActionGetSuggestFood(Action):
 
         # get best food by random
         food_index = random.randint(0, len(foods))
-        dispatcher.utter_message(text='response suggest food here')
+        suggest_food = foods[food_index]
+        print(suggest_food)
+        dispatcher.utter_message(text='Tôi tìm được món này: {}'.format(suggest_food[1]))
+        if suggest_food[3]:
+            dispatcher.utter_message(text='Địa chỉ: {}'.format(suggest_food[3]))
+        if suggest_food[8]:
+            dispatcher.utter_message(text='Mức đánh giá: {}*'.format(suggest_food[8]))
+        if suggest_food[6]:
+            dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_food[6]))
+        if suggest_food[5]:
+            dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_food[5]))
+        if suggest_food[8] and suggest_food[8] >= 4.5:
+            response = [
+                'Có vẻ món này ngon đó.',
+                'Điểm đánh giá rất cao, có vẻ ngon',
+                'yummy!',
+                'delicious foods!',
+            ]
+            dispatcher.utter_message(text=random.choice(response))
+        else:
+            response = [
+                'Món này có vẻ ok',
+                'Điểm đánh giá cũng không thấp, có vẻ ổn',
+                'Cũng được đó',
+                'Cũng đáng để thử',
+            ]
+            dispatcher.utter_message(text=random.choice(response))
 
-        return []
-
-
-# action get food link
-class ActionGetFoodLink(Action):
-    def name(self) -> Text:
-        return 'action_get_food_link'
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # get food here
-        dispatcher.utter_message(text='response food link here')
-
-        return []
+        return [SlotSet('suggest_food', suggest_food)]
 
 
 # action how to cook food
@@ -215,7 +227,8 @@ class ActionHowToCookFood(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # action find cook food here
+        suggest_food = tracker.get_slot('suggest_food')
+        print(suggest_food)
         dispatcher.utter_message(text='response how to cook food here')
 
         return []
