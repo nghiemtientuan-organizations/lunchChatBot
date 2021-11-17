@@ -81,8 +81,90 @@ stories:
   steps:
     - intent: ask_suggest_food
     - action: action_get_suggest_food
-    - active_loop: action_get_suggest_food
-    - active_loop: null
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name 1,2, cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name 1,2,3 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name 1,2,3,4 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name, other
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+- story: ask food name, other, cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name, other 1,2
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+- story: ask food name, other 1,2 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+- story: ask food name, other 1,2,3
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+- story: ask food name, other 1,2,3 cook
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name and other food

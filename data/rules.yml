@@ -27,5 +27,3 @@ rules:
   steps:
     - intent: ask_suggest_food
     - action: action_get_suggest_food
-    - active_loop: action_get_suggest_food
-    - active_loop: null
