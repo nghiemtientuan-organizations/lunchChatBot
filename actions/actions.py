@@ -216,7 +216,7 @@ class ActionGetSuggestFood(Action):
             ]
             dispatcher.utter_message(text=random.choice(response))
 
-        return []
+        return [SlotSet('suggest_food', suggest_food)]
 
 
 # action how to cook food
@@ -227,7 +227,8 @@ class ActionHowToCookFood(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # action find cook food here
+        suggest_food = tracker.get_slot('suggest_food')
+        print(suggest_food)
         dispatcher.utter_message(text='response how to cook food here')
 
         return []
