@@ -81,6 +81,8 @@ stories:
   steps:
     - intent: ask_suggest_food
     - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name 1,2, cook
@@ -89,6 +91,8 @@ stories:
     - action: action_get_suggest_food
     - intent: ask_suggest_food
     - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name 1,2,3 cook
@@ -99,6 +103,8 @@ stories:
     - action: action_get_suggest_food
     - intent: ask_suggest_food
     - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name 1,2,3,4 cook
@@ -111,6 +117,8 @@ stories:
     - action: action_get_suggest_food
     - intent: ask_suggest_food
     - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name, other
@@ -125,6 +133,8 @@ stories:
     - action: action_get_suggest_food
     - intent: ask_food_other
     - action: ask_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name, other 1,2
@@ -143,6 +153,8 @@ stories:
     - action: ask_suggest_food
     - intent: ask_food_other
     - action: ask_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name, other 1,2,3
@@ -165,6 +177,8 @@ stories:
     - action: ask_suggest_food
     - intent: ask_food_other
     - action: ask_suggest_food
+    - slot_was_set:
+        - suggest_food
     - intent: ask_cook_food
     - action: action_how_to_cook_food
 - story: ask food name and other food
@@ -189,5 +203,7 @@ stories:
   - action: utter_bot_ability
   - intent: ask_suggest_food
   - action: action_get_suggest_food
+  - slot_was_set:
+      - suggest_food
   - intent: ask_cook_food
   - action: action_how_to_cook_food

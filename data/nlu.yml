@@ -246,6 +246,7 @@ nlu:
     - suggest cho món nào
     - thời tiết thế này ăn gì được nhỉ
     - nên ăn gì
+    - ăn gì bây giờ
 
 - intent: ask_cook_food
   examples: |

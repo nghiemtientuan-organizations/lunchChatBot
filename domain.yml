@@ -40,7 +40,12 @@ intents:
 - ask_bot_author_name:
     use_entities: true
 entities: []
-slots: {}
+slots:
+  suggest_food:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
 responses:
   utter_greet:
   - text: Chào bạn
