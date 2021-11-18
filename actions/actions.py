@@ -27,6 +27,7 @@ seasons_name = [
     'mùa đông',
 ]
 weather_org_url = 'https://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=1cefc1d741a0e2bc1ce1728e91d651ec'
+cook_food_search_url = 'https://toinayangi.vn/?s='
 
 # Food temp 25-35 define
 COLD_TEMP = 0       # < 25
