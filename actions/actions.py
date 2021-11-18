@@ -6,8 +6,9 @@
 
 import sqlite3
 import random
-
 import requests
+from bs4 import BeautifulSoup as bs
+
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
 from typing import Any, Text, Dict, List
@@ -27,7 +28,7 @@ seasons_name = [
     'mùa đông',
 ]
 weather_org_url = 'https://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=1cefc1d741a0e2bc1ce1728e91d651ec'
-cook_food_search_url = 'https://toinayangi.vn/?s='
+cook_food_search_url = 'https://www.google.com/search?q={}'
 
 # Food temp 25-35 define
 COLD_TEMP = 0       # < 25
@@ -159,8 +160,11 @@ class ActionGetSuggestFood(Action):
         food_sql = "SELECT * FROM foods WHERE type = {} ".format(FOOD_TYPE)
 
         # get now temp & doAm
-        temp = kel_to_cel(get_temp()['temp'])
-        humidity = get_temp()['humidity']
+        # temp = kel_to_cel(get_temp()['temp'])
+        # humidity = get_temp()['humidity']
+        # fake data info
+        temp = 19
+        humidity = 90
         print("[Action][Temp] temp: {}, humidity: {}%".format(temp, humidity))
         if temp < default_cold_temp:
             # get hot food
@@ -229,8 +233,29 @@ class ActionHowToCookFood(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         suggest_food = tracker.get_slot('suggest_food')
-        print(suggest_food)
-        dispatcher.utter_message(text='response how to cook food here')
+        try:
+            search_url = cook_food_search_url.format(
+                requests.utils.quote('Cách nấu {}'.format(suggest_food[1]))
+            )
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36'
+            }
+            print('[Noti][Cook]Search {}'.format(search_url))
+            foods_search_response = requests.get(search_url, headers=headers)
+            body_search_page = bs(foods_search_response.content, "html.parser").body
+            posts = body_search_page.select("[class='g'] a[href^='http'][data-ved]:has(h3)")
+            if len(posts):
+                cook_element = posts[0]
+                cook_title = cook_element.select_one("h3").get_text(strip=True)
+                cook_link = cook_element.get('href')
+                dispatcher.utter_message(text='Tôi tìm thấy cách nấu ở đây:')
+                dispatcher.utter_message(text='{}'.format(cook_title))
+                dispatcher.utter_message(text='[{link}]({link})'.format(link=cook_link))
+            else:
+                dispatcher.utter_message(text='Hiện tại tôi chưa tìm thấy cách nấu món này, tôi sẽ thử lại sau nhé.')
+        except Exception:
+            print(str(Exception))
+            dispatcher.utter_message(text='Hiện tại tôi chưa tìm thấy cách nấu món này, tôi sẽ thử lại sau nhé.')
 
         return []
 

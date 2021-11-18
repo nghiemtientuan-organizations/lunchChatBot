@@ -1,3 +1,4 @@
 pip==21.3
 rasa==2.6.0
 rasa-sdk==2.6.0
+beautifulsoup4==4.10.0
