@@ -224,6 +224,46 @@ class ActionGetSuggestFood(Action):
         return [SlotSet('suggest_food', suggest_food)]
 
 
+# action get drink
+class ActionGetSuggestDrink(Action):
+    def name(self) -> Text:
+        return 'action_get_suggest_drink'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # connect to db to get all drinks
+        sqlite_connection = sqlite3.connect(DB_FOOD_PATH)
+        cursor = sqlite_connection.cursor()
+        print("[Action][DB][Foods] Databases Connected Successfully")
+        drink_sql = "SELECT * FROM foods WHERE type = {}".format(DRINk_TYPE)
+        cursor.execute(drink_sql)
+        drinks = cursor.fetchall()
+        print("[Action][DB][Foods] Get drinks success")
+        sqlite_connection.close()
+
+        # haven't drinks
+        if len(drinks) == 0:
+            dispatcher.utter_message(text='Hiện tại tôi không tìm được đồ uống nào phù hợp, để tôi tìm thêm nhé!')
+            return [Restarted()]
+
+        # get best food by random
+        food_index = random.randint(0, len(drinks))
+        suggest_drink = drinks[food_index]
+        print(suggest_drink)
+        dispatcher.utter_message(text='Đồ uống ở đây: {}'.format(suggest_drink[1]))
+        if suggest_drink[3]:
+            dispatcher.utter_message(text='Địa chỉ: {}'.format(suggest_drink[3]))
+        if suggest_drink[8]:
+            dispatcher.utter_message(text='Đánh giá: {}*'.format(suggest_drink[8]))
+        if suggest_drink[6]:
+            dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_drink[6]))
+        if suggest_drink[5]:
+            dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_drink[5]))
+
+        return []
+
+
 # action how to cook food
 class ActionHowToCookFood(Action):
     def name(self) -> Text:

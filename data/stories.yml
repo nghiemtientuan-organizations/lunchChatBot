@@ -207,3 +207,59 @@ stories:
       - suggest_food
   - intent: ask_cook_food
   - action: action_how_to_cook_food
+- story: ask suggest food, drink
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
+    - intent: ask_suggest_drink
+    - action: action_get_suggest_drink
+- story: ask suggest food, loop, drink
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
+    - intent: ask_suggest_drink
+    - action: action_get_suggest_drink
+- story: ask suggest food, cook food, drink
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+    - intent: ask_suggest_drink
+    - action: action_get_suggest_drink
+- story: ask suggest food, loop, cook food, drink
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - slot_was_set:
+        - suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+    - intent: ask_suggest_drink
+    - action: action_get_suggest_drink
+- story: ask food name, other, cook, drink
+  steps:
+    - intent: ask_suggest_food
+    - action: action_get_suggest_food
+    - intent: ask_food_other
+    - action: ask_suggest_food
+    - slot_was_set:
+        - suggest_food
+    - intent: ask_cook_food
+    - action: action_how_to_cook_food
+    - intent: ask_suggest_drink
+    - action: action_get_suggest_drink

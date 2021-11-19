@@ -239,7 +239,7 @@ nlu:
     - m biết món nào ngon không
     - ăn gì được nhỉ
     - ăn chi
-    - t có thể ăn gig?
+    - t có thể ăn gì?
     - nên ăn gì được nhỉ?
     - ăn gì
     - tiểu nhị cho món
@@ -267,3 +267,13 @@ nlu:
     - next
     - món tiếp
     - tiếp, tau chưa ưng
+
+- intent: ask_suggest_drink
+  examples: |
+    - uống gì được
+    - uống gì bây giờ
+    - uống chi
+    - cho một đồ uống coi
+    - nên uống gì
+    - suggest cho t một dồ uống coi
+    - lên đồ uống đuê
