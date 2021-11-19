@@ -235,7 +235,7 @@ class ActionHowToCookFood(Action):
         suggest_food = tracker.get_slot('suggest_food')
         try:
             search_url = cook_food_search_url.format(
-                requests.utils.quote('Cách nấu {}'.format(suggest_food[1]))
+                requests.utils.quote('Cách nấu {} tại nhà'.format(suggest_food[1]))
             )
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36'
