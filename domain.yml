@@ -39,6 +39,8 @@ intents:
     use_entities: true
 - ask_bot_author_name:
     use_entities: true
+- ask_suggest_drink:
+    use_entities: true
 entities: []
 slots:
   suggest_food:
@@ -96,6 +98,6 @@ actions:
 - action_get_temperature
 - action_get_suggest_food
 - action_how_to_cook_food
-- ask_suggest_food
+- action_get_suggest_drink
 forms: {}
 e2e_actions: []
