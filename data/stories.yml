@@ -1,36 +1,5 @@
 version: "2.0"
 stories:
-# Single talk
-- story: ask bot name
-  steps:
-  - intent: ask_bot_name
-  - action: utter_bot_name
-- story: ask bot challenge
-  steps:
-  - intent: bot_challenge
-  - action: utter_bot_challenge
-- story: ask bot ability
-  steps:
-  - intent: ask_bot_ability
-  - action: utter_bot_ability
-- story: ask time
-  steps:
-  - intent: ask_time
-  - action: action_get_date
-- story: ask now session
-  steps:
-  - intent: ask_now_session
-  - action: action_get_season
-- story: ask now temperature
-  steps:
-  - intent: ask_now_weather
-  - action: action_get_temperature
-- story: ask suggest food
-  steps:
-  - intent: ask_suggest_food
-  - action: action_get_suggest_food
-
-# Mix
 - story: ask time
   steps:
   - intent: ask_time
