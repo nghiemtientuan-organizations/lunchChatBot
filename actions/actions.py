@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup as bs
 
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
+import pytz
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, SessionStarted, EventType
@@ -19,7 +20,8 @@ from rasa_sdk.events import Restarted
 # foods db
 DB_FOOD_PATH = './db/foods.db'
 
-now = datetime.now()
+VN_TZ = pytz.timezone('Asia/Ho_Chi_Minh')
+now = datetime.now(VN_TZ)
 month = now.strftime('%m')
 seasons_name = [
     'mùa xuân',
