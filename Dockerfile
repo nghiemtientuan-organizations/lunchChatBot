@@ -12,6 +12,7 @@ USER root
 # Copy actions folder to working directory
 COPY ./actions /app/actions
 COPY ./requirements /app/requirements
+COPY ./db /app/db
 
 # Install extra requirements for actions code, if necessary (uncomment next line)
 RUN pip install -r requirements/actions.txt
