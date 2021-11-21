@@ -75,6 +75,14 @@ responses:
   utter_happy:
   - text: Bạn vui thì tôi cũng vui rồi.
   - text: Lan tỏa sự "Vui" đến với tôi đi.
+  - text: Bạn không thể vừa ghen tị và vừa hạnh phúc.
+  - text: Hạnh phúc… là cho, và sống vì người khác.
+  - text: Tôi sinh ra để bạn hạnh phúc hơn mà.
+  utter_unhappy:
+  - text: Trong cuộc sống có đôi lúc dường như mọi thứ không theo ý của bạn. Nhưng đừng vội bỏ cuộc, sự cố gắng sẽ đem bạn đến với thứ mà bạn muốn.
+  - text: Chê người khác xấu, có làm bạn đẹp hơn không? Chê người khác ngu, có làm bạn thông minh hơn không?
+  - text: Đời bắt mình diễn. Thì ngại gì không nhận 1 vai. Đúng thì nai mà sai thì cáo. Cuộc đời nó láo. Mình bát nháo để thêm vui.
+  - text: Nào nào. Mình làm lại nhé.
   utter_goodbye:
   - image: https://picsum.photos/200/300
     text: Chào

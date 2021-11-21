@@ -105,6 +105,7 @@ nlu:
     - kin kin
     - kinh kinh
     - giỏi ghê
+    - được đó
 
 - intent: mood_unhappy
   examples: |
@@ -248,16 +249,6 @@ nlu:
     - nên ăn gì
     - ăn gì bây giờ
 
-- intent: ask_cook_food
-  examples: |
-    - nấu như nào
-    - mấu món này như nào
-    - công thức như nào
-    - xin bí quyết nấu
-    - t không biết nấu món này, m biết nấu không?
-
-- intent: ask_food_other
-  examples: |
     - cho món khác
     - tiểu nhị cho món khác
     - coi món khác
@@ -267,6 +258,14 @@ nlu:
     - next
     - món tiếp
     - tiếp, tau chưa ưng
+
+- intent: ask_cook_food
+  examples: |
+    - nấu như nào
+    - mấu món này như nào
+    - công thức như nào
+    - xin bí quyết nấu
+    - t không biết nấu món này, m biết nấu không?
 
 - intent: ask_suggest_drink
   examples: |

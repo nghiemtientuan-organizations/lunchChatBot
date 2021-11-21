@@ -1,6 +1,15 @@
 version: "2.0"
 
 rules:
+- rule: mood_great
+  steps:
+    - intent: mood_great
+    - action: utter_happy
+
+- rule: mood_unhappy
+  steps:
+    - intent: mood_unhappy
+    - action: utter_unhappy
 
 - rule: ask bot name
   steps:
@@ -37,16 +46,6 @@ rules:
     - intent: goodbye
     - action: utter_goodbye
     - action: action_refresh_story
-
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-
-- rule: Say bot name anytime the user ask bot name
-  steps:
-    - intent: ask_bot_name
-    - action: utter_bot_name
 
 - rule: greeting
   steps:
