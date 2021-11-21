@@ -231,7 +231,7 @@ nlu:
     - cho tao biết nay bao nhiêu độ vậy
     - thời tiết lạnh không?
     - thời tiết nóng không?
-    - bao nhiêu độ
+    - trời bao nhiêu độ
     - hiện tại bao nhiêu độ
 
 - intent: ask_suggest_food
@@ -276,3 +276,26 @@ nlu:
     - nên uống gì
     - suggest cho t một dồ uống coi
     - lên đồ uống đuê
+
+# find food
+- intent: ask_find_food
+  examples: |
+    - tìm cho t món [bún chả](find_food)
+    - món [bún cá](find_food) có không?
+    - cho t hỏi món [bún cá](find_food) có không?
+    - m có biết món [bún cá](find_food) mua ở đâu không?
+    - mua [bún cá](find_food) ở đâu
+    - cho t một địa chỉ [bún cá](find_food) ngon đi
+    - [bún cá](find_food) chỗ nào bán?
+    - [bún cá](find_food) bán ở đâu
+    - chỗ nào bán [bún cá](find_food)
+    - t muốn ăn [bún cá](find_food)
+    - ăn [bún cá](find_food) ở đâu
+    - [bún cá](find_food) ở chỗ nào
+    - trên shopeefood có [bún](find_food) không?
+    - đặt [bún cá chấm](find_food) ở đâu
+    - tìm [bún riêu](find_food) đi
+    - tìm [bún bò huế](find_food) cho t
+    - tìm [Cháo ngon](find_food)
+    - find [Cá rán](find_food)
+    - tìm [bún riêu cua](find_food)

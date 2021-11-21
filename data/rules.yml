@@ -61,3 +61,10 @@ rules:
   steps:
     - intent: ask_suggest_drink
     - action: action_get_suggest_drink
+
+- rule: ask_find_food
+  steps:
+    - intent: ask_find_food
+      entities:
+        - find_food
+    - action: action_find_food

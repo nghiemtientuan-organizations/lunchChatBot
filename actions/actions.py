@@ -302,6 +302,47 @@ class ActionHowToCookFood(Action):
         return []
 
 
+# action find food by name
+class ActionFindFood(Action):
+    def name(self) -> Text:
+        return 'action_find_food'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        find_food = tracker.get_latest_entity_values('find_food').__next__()
+        print(find_food)
+        if find_food:
+            # connect to db to get all foods
+            sqlite_connection = sqlite3.connect(DB_FOOD_PATH)
+            cursor = sqlite_connection.cursor()
+            print("[Action][DB][Foods] Databases Connected Successfully")
+            food_sql = "SELECT * FROM foods WHERE type = {} AND name LIKE '%{}%' LIMIT 5".format(FOOD_TYPE, find_food)
+            cursor.execute(food_sql)
+            foods = cursor.fetchall()
+
+            # haven't food
+            if len(foods) == 0:
+                dispatcher.utter_message(text='Hiện tại tôi không tìm được món nào phù hợp, để tôi tìm thêm nhé!')
+                return []
+
+            dispatcher.utter_message(text='Tôi tìm được {} chỗ:'.format(len(foods)))
+            for food in foods:
+                print(food)
+                dispatcher.utter_message(
+                    text='{food_name}\n{delivery_name}\n{address}\n[{link}]({link})'.format(
+                        food_name=food[1],
+                        delivery_name=food[2],
+                        address=food[3],
+                        link=food[5]
+                    )
+                )
+        else:
+            dispatcher.utter_message(text='Tôi không hiểu món mà bạn cần tìm. Bạn thử cú pháp "tìm bún cá" xem có được không!')
+
+        return []
+
+
 # action restart story
 class ActionRefreshStory(Action):
     def name(self) -> Text:
