@@ -68,7 +68,8 @@ responses:
       \- 1. Trò chuyện với bạn.\
       \- 2. Hỏi thời gian, mùa hiện tại, thời tiết hiện tại.\
       \- 3. Gợi ý món.\
-      \- 4. Tìm cách nấu
+      \- 4. Tìm cách nấu\
+      \(Bạn hãy gửi cho tôi những câu đơn giản như: hi, chào, xin chào, tạm biệt, biến, mấy h rồi, trời lạnh không, ăn gì được, nấu thế nào, ...)
   utter_bot_name:
   - text: Tôi tên là Bánh bao.
   - text: Bánh bao là tên của tôi.
