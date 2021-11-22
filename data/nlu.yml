@@ -105,6 +105,7 @@ nlu:
     - kin kin
     - kinh kinh
     - giỏi ghê
+    - được đó
 
 - intent: mood_unhappy
   examples: |
@@ -230,7 +231,7 @@ nlu:
     - cho tao biết nay bao nhiêu độ vậy
     - thời tiết lạnh không?
     - thời tiết nóng không?
-    - bao nhiêu độ
+    - trời bao nhiêu độ
     - hiện tại bao nhiêu độ
 
 - intent: ask_suggest_food
@@ -248,16 +249,6 @@ nlu:
     - nên ăn gì
     - ăn gì bây giờ
 
-- intent: ask_cook_food
-  examples: |
-    - nấu như nào
-    - mấu món này như nào
-    - công thức như nào
-    - xin bí quyết nấu
-    - t không biết nấu món này, m biết nấu không?
-
-- intent: ask_food_other
-  examples: |
     - cho món khác
     - tiểu nhị cho món khác
     - coi món khác
@@ -268,6 +259,14 @@ nlu:
     - món tiếp
     - tiếp, tau chưa ưng
 
+- intent: ask_cook_food
+  examples: |
+    - nấu như nào
+    - mấu món này như nào
+    - công thức như nào
+    - xin bí quyết nấu
+    - t không biết nấu món này, m biết nấu không?
+
 - intent: ask_suggest_drink
   examples: |
     - uống gì được
@@ -277,3 +276,26 @@ nlu:
     - nên uống gì
     - suggest cho t một dồ uống coi
     - lên đồ uống đuê
+
+# find food
+- intent: ask_find_food
+  examples: |
+    - tìm cho t món [bún chả](find_food)
+    - món [bún cá](find_food) có không?
+    - cho t hỏi món [bún cá](find_food) có không?
+    - m có biết món [bún cá](find_food) mua ở đâu không?
+    - mua [bún cá](find_food) ở đâu
+    - cho t một địa chỉ [bún cá](find_food) ngon đi
+    - [bún cá](find_food) chỗ nào bán?
+    - [bún cá](find_food) bán ở đâu
+    - chỗ nào bán [bún cá](find_food)
+    - t muốn ăn [bún cá](find_food)
+    - ăn [bún cá](find_food) ở đâu
+    - [bún cá](find_food) ở chỗ nào
+    - trên shopeefood có [bún](find_food) không?
+    - đặt [bún cá chấm](find_food) ở đâu
+    - tìm [bún riêu](find_food) đi
+    - tìm [bún bò huế](find_food) cho t
+    - tìm [Cháo ngon](find_food)
+    - find [Cá rán](find_food)
+    - tìm [bún riêu cua](find_food)

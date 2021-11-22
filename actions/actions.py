@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup as bs
 
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
+import pytz
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, SessionStarted, EventType
@@ -19,7 +20,8 @@ from rasa_sdk.events import Restarted
 # foods db
 DB_FOOD_PATH = './db/foods.db'
 
-now = datetime.now()
+VN_TZ = pytz.timezone('Asia/Ho_Chi_Minh')
+now = datetime.now(VN_TZ)
 month = now.strftime('%m')
 seasons_name = [
     'mùa xuân',
@@ -296,6 +298,47 @@ class ActionHowToCookFood(Action):
         except Exception:
             print(str(Exception))
             dispatcher.utter_message(text='Hiện tại tôi chưa tìm thấy cách nấu món này, tôi sẽ thử lại sau nhé.')
+
+        return []
+
+
+# action find food by name
+class ActionFindFood(Action):
+    def name(self) -> Text:
+        return 'action_find_food'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        find_food = tracker.get_latest_entity_values('find_food').__next__()
+        print(find_food)
+        if find_food:
+            # connect to db to get all foods
+            sqlite_connection = sqlite3.connect(DB_FOOD_PATH)
+            cursor = sqlite_connection.cursor()
+            print("[Action][DB][Foods] Databases Connected Successfully")
+            food_sql = "SELECT * FROM foods WHERE type = {} AND name LIKE '%{}%' LIMIT 5".format(FOOD_TYPE, find_food)
+            cursor.execute(food_sql)
+            foods = cursor.fetchall()
+
+            # haven't food
+            if len(foods) == 0:
+                dispatcher.utter_message(text='Hiện tại tôi không tìm được món nào phù hợp, để tôi tìm thêm nhé!')
+                return []
+
+            dispatcher.utter_message(text='Tôi tìm được {} chỗ:'.format(len(foods)))
+            for food in foods:
+                print(food)
+                dispatcher.utter_message(
+                    text='{food_name}\n{delivery_name}\n{address}\n[{link}]({link})'.format(
+                        food_name=food[1],
+                        delivery_name=food[2],
+                        address=food[3],
+                        link=food[5]
+                    )
+                )
+        else:
+            dispatcher.utter_message(text='Tôi không hiểu món mà bạn cần tìm. Bạn thử cú pháp "tìm bún cá" xem có được không!')
 
         return []
 
