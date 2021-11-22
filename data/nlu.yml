@@ -248,6 +248,7 @@ nlu:
     - thời tiết thế này ăn gì được nhỉ
     - nên ăn gì
     - ăn gì bây giờ
+    - gợi ý món
 
     - cho món khác
     - tiểu nhị cho món khác
@@ -266,6 +267,7 @@ nlu:
     - công thức như nào
     - xin bí quyết nấu
     - t không biết nấu món này, m biết nấu không?
+    - tìm cách nấu
 
 - intent: ask_suggest_drink
   examples: |
