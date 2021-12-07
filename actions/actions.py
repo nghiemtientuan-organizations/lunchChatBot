@@ -90,8 +90,10 @@ class ActionGetDate(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(text=now.strftime('Bây giờ là: %H:%M.'))
-        dispatcher.utter_message(text=now.strftime('Ngày %d/%m/%Y.'))
+        text_response = now.strftime('Bây giờ là: %H:%M.\nNgày %d/%m/%Y.')
+        # dispatcher.utter_message(text=now.strftime('Bây giờ là: %H:%M.'))
+        # dispatcher.utter_message(text=now.strftime('Ngày %d/%m/%Y.'))
+        dispatcher.utter_message(text=text_response)
 
         return []
 
@@ -126,20 +128,29 @@ class ActionGetTemperature(Action):
             win_data = data_json['wind']
 
             # response info
-            dispatcher.utter_message(text='Theo tôi biết hiện tại đang là {} độ.'.format(temp))
+            text_response = 'Theo tôi biết hiện tại đang là {} độ.\n'.format(temp)
+            # dispatcher.utter_message(text='Theo tôi biết hiện tại đang là {} độ.'.format(temp))
             if temp_min != temp_max:
-                dispatcher.utter_message(text='Cao nhất {} - thấp nhất {}.'.format(temp_min, temp_max))
-            dispatcher.utter_message(
-                text='Tốc độ gió là {} km/h, độ ẩm {}%'.format(win_data['speed'], main_data['humidity'])
-            )
+                text_response += 'Cao nhất {} - thấp nhất {}.\n'.format(temp_min, temp_max)
+                # dispatcher.utter_message(text='Cao nhất {} - thấp nhất {}.'.format(temp_min, temp_max))
+
+            text_response += 'Tốc độ gió là {} km/h, độ ẩm {}%\n'.format(win_data['speed'], main_data['humidity'])
+            # dispatcher.utter_message(
+            #     text='Tốc độ gió là {} km/h, độ ẩm {}%'.format(win_data['speed'], main_data['humidity'])
+            # )
 
             # response bot's feel
             if temp <= default_cold_temp:
-                dispatcher.utter_message(text='Trời lạnh thật, trời này mà ăn bát gì đó ấm ấm thì tuyệt cú mèo.')
+                text_response += 'Trời lạnh thật, trời này mà ăn bát gì đó ấm ấm thì tuyệt cú mèo.'
+                # dispatcher.utter_message(text='Trời lạnh thật, trời này mà ăn bát gì đó ấm ấm thì tuyệt cú mèo.')
             elif temp >= default_hot_temp:
-                dispatcher.utter_message(text='Thời tiết nóng nhỉ, làm chút gì đó mát mát nào vừa thanh lọc cơ thể.')
+                text_response += 'Thời tiết nóng nhỉ, làm chút gì đó mát mát nào vừa thanh lọc cơ thể.'
+                # dispatcher.utter_message(text='Thời tiết nóng nhỉ, làm chút gì đó mát mát nào vừa thanh lọc cơ thể.')
             else:
-                dispatcher.utter_message(text='Thời tiết này ăn gì cũng ngon.')
+                text_response += 'Thời tiết này ăn gì cũng ngon.'
+                # dispatcher.utter_message(text='Thời tiết này ăn gì cũng ngon.')
+
+            dispatcher.utter_message(text=text_response)
         except Exception:
             dispatcher.utter_message(
                 text='Hiên tại tôi đang không lấy được dữ liệu về thời tiết. Phiền bạn thử lại sau.')
@@ -197,15 +208,20 @@ class ActionGetSuggestFood(Action):
         food_index = random.randint(0, len(foods))
         suggest_food = foods[food_index]
         print(suggest_food)
-        dispatcher.utter_message(text='Tôi tìm được món này: {}'.format(suggest_food[1]))
+        text_response = 'Tôi tìm được món này: {}\n'.format(suggest_food[1])
+        # dispatcher.utter_message(text='Tôi tìm được món này: {}'.format(suggest_food[1]))
         if suggest_food[3]:
-            dispatcher.utter_message(text='Địa chỉ: {}'.format(suggest_food[3]))
+            text_response += '- Địa chỉ: {}\n'.format(suggest_food[3])
+            # dispatcher.utter_message(text='Địa chỉ: {}'.format(suggest_food[3]))
         if suggest_food[8]:
-            dispatcher.utter_message(text='Mức đánh giá: {}*'.format(suggest_food[8]))
+            text_response += '- Mức đánh giá: {}*\n'.format(suggest_food[8])
+            # dispatcher.utter_message(text='Mức đánh giá: {}*'.format(suggest_food[8]))
         if suggest_food[6]:
-            dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_food[6]))
+            text_response += '- Giảm giá: {} (theo shopee food)\n'.format(suggest_food[6])
+            # dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_food[6]))
         if suggest_food[5]:
-            dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_food[5]))
+            text_response += '[{link}]({link})\n'.format(link=suggest_food[5])
+            # dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_food[5]))
         if suggest_food[8] and suggest_food[8] >= 4.5:
             response = [
                 'Có vẻ món này ngon đó.',
@@ -213,7 +229,8 @@ class ActionGetSuggestFood(Action):
                 'yummy!',
                 'delicious foods!',
             ]
-            dispatcher.utter_message(text=random.choice(response))
+            text_response += random.choice(response)
+            # dispatcher.utter_message(text=random.choice(response))
         else:
             response = [
                 'Món này có vẻ ok',
@@ -221,7 +238,10 @@ class ActionGetSuggestFood(Action):
                 'Cũng được đó',
                 'Cũng đáng để thử',
             ]
-            dispatcher.utter_message(text=random.choice(response))
+            text_response += random.choice(response)
+            # dispatcher.utter_message(text=random.choice(response))
+
+        dispatcher.utter_message(text=text_response)
 
         return [SlotSet('suggest_food', suggest_food)]
 
@@ -253,15 +273,22 @@ class ActionGetSuggestDrink(Action):
         food_index = random.randint(0, len(drinks))
         suggest_drink = drinks[food_index]
         print(suggest_drink)
-        dispatcher.utter_message(text='Đồ uống ở đây: {}'.format(suggest_drink[1]))
+        text_response = 'Đồ uống ở đây: {}\n'.format(suggest_drink[1])
+        # dispatcher.utter_message(text='Đồ uống ở đây: {}'.format(suggest_drink[1]))
         if suggest_drink[3]:
-            dispatcher.utter_message(text='Địa chỉ: {}'.format(suggest_drink[3]))
+            text_response += '- Địa chỉ: {}\n'.format(suggest_drink[3])
+            # dispatcher.utter_message(text='Địa chỉ: {}'.format(suggest_drink[3]))
         if suggest_drink[8]:
-            dispatcher.utter_message(text='Đánh giá: {}*'.format(suggest_drink[8]))
+            text_response += '- Đánh giá: {}*\n'.format(suggest_drink[8])
+            # dispatcher.utter_message(text='Đánh giá: {}*'.format(suggest_drink[8]))
         if suggest_drink[6]:
-            dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_drink[6]))
+            text_response += '- Giảm giá: {} (theo shopee food)\n'.format(suggest_drink[6])
+            # dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_drink[6]))
         if suggest_drink[5]:
-            dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_drink[5]))
+            text_response += '[{link}]({link})'.format(link=suggest_drink[5])
+            # dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_drink[5]))
+
+        dispatcher.utter_message(text=text_response)
 
         return []
 
@@ -290,9 +317,14 @@ class ActionHowToCookFood(Action):
                 cook_element = posts[0]
                 cook_title = cook_element.select_one("h3").get_text(strip=True)
                 cook_link = cook_element.get('href')
-                dispatcher.utter_message(text='Tôi tìm thấy cách nấu ở đây:')
-                dispatcher.utter_message(text='{}'.format(cook_title))
-                dispatcher.utter_message(text='[{link}]({link})'.format(link=cook_link))
+                text_response = 'Tôi tìm thấy cách nấu ở đây:\n[{cook_title}]({link})'.format(
+                    cook_title=cook_title,
+                    link=cook_link
+                )
+                # dispatcher.utter_message(text='Tôi tìm thấy cách nấu ở đây:')
+                # dispatcher.utter_message(text='{}'.format(cook_title))
+                # dispatcher.utter_message(text='[{link}]({link})'.format(link=cook_link))
+                dispatcher.utter_message(text=text_response)
             else:
                 dispatcher.utter_message(text='Hiện tại tôi chưa tìm thấy cách nấu món này, tôi sẽ thử lại sau nhé.')
         except Exception:
@@ -326,17 +358,26 @@ class ActionFindFood(Action):
                 dispatcher.utter_message(text='Hiện tại tôi không tìm được món nào phù hợp, để tôi tìm thêm nhé!')
                 return []
 
-            dispatcher.utter_message(text='Tôi tìm được {} chỗ:'.format(len(foods)))
+            text_response = 'Tôi tìm được {} chỗ:\n'.format(len(foods))
+            # dispatcher.utter_message(text='Tôi tìm được {} chỗ:'.format(len(foods)))
             for food in foods:
                 print(food)
-                dispatcher.utter_message(
-                    text='{food_name}\n{delivery_name}\n{address}\n[{link}]({link})'.format(
-                        food_name=food[1],
-                        delivery_name=food[2],
-                        address=food[3],
-                        link=food[5]
-                    )
+                text_response += '- {food_name}, [{delivery_name}]({link}), {address}\n'.format(
+                    food_name=food[1],
+                    delivery_name=food[2],
+                    address=food[3],
+                    link=food[5]
                 )
+                # dispatcher.utter_message(
+                #     text='{food_name}\n{delivery_name}\n{address}\n[{link}]({link})'.format(
+                #         food_name=food[1],
+                #         delivery_name=food[2],
+                #         address=food[3],
+                #         link=food[5]
+                #     )
+                # )
+
+            dispatcher.utter_message(text=text_response)
         else:
             dispatcher.utter_message(text='Tôi không hiểu món mà bạn cần tìm. Bạn thử cú pháp "tìm bún cá" xem có được không!')
 
@@ -385,7 +426,7 @@ class ActionDefaultFallback(Action):
             'Tôi chưa hiểu ý bạn. Tôi sẽ học tập thêm.',
             'Vấn đề này có vẻ khó. Để tôi đi hỏi boss rồi lần tới tôi sẽ trả lời bạn nhé.',
             'Chịu. Tôi chưa hiều bạn nói. Để tôi học tập thêm nhé.',
-            'Tôi không hiểu.',
+            'Tôi không hiểu. Tôi sẽ tìm hiểu thêm',
         ]
         dispatcher.utter_message(text=random.choice(response))
 
