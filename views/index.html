@@ -250,13 +250,26 @@
         </h2>
     </footer>
 
-    <!--  Chatbot socket  -->
-    <div id="rasa-chat-widget" data-websocket-url="http://localhost:5005"></div>
-    <script src="./static/widget.js" type="application/javascript"></script>
+    <!--  Chatbot ui rasa  -->
+    <!--        <div id="rasa-chat-widget" data-websocket-url="http://localhost:5005" style="left: 20px; bottom: 39px"></div>-->
+    <!--        <style>#rasa-chat-widget-container {left: 20px; bottom: 39px; right: unset}</style>-->
+    <!--        <script src="./static/widget.js" type="application/javascript"></script>-->
     <!--  END chatbot socket  -->
 
-    <!--  Styles  -->
+    <!--  Chatbot socket ui  -->
+    <div id="chat-container"></div>
     <script src="./static/demo_bot/chatbot-ui.js"></script>
+
+    <script>
+        createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook',
+            botLogo = "./icons/bot_icon.png",
+            title = "Bánh bao chào bạn",
+            welcomeMessage = "Chào bạn tôi có thể giúp gì được cho bạn?",
+            inactiveMsg = "Tạm thời tôi bị mất kết nối với máy chủ, bạn vui lòng tải lai trang."
+        )
+    </script>
+
+    <!--  Styles  -->
     <script src="./static/prism.js"></script>
     <script src="./static/jquery-3.5.1.slim.min.js"></script>
     <script src="./static/bootstrap.min.js"></script>
@@ -264,6 +277,7 @@
     <script>AOS.init();</script>
     <script>$('[data-aos]').parent().addClass('hideOverflowOnMobile');</script>
     <!--  END Styles  -->
+    <!--  END chatbot socket ui  -->
 </body>
 
 </html>
