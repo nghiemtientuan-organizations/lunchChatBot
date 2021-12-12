@@ -268,12 +268,17 @@ nlu:
     - xin bí quyết nấu
     - t không biết nấu món này, m biết nấu không?
     - tìm cách nấu
+    - món trên nấu thế nào
+    - cách nấu nón này thế nào
 
 - intent: ask_suggest_drink
   examples: |
     - uống gì được
     - uống gì bây giờ
     - uống chi
+    - ún chi
+    - ún gì được
+    - nên ún gì
     - cho một đồ uống coi
     - nên uống gì
     - suggest cho t một dồ uống coi
@@ -284,15 +289,15 @@ nlu:
   examples: |
     - tìm cho t món [bún chả](find_food)
     - món [bún cá](find_food) có không?
-    - cho t hỏi món [bún cá](find_food) có không?
-    - m có biết món [bún cá](find_food) mua ở đâu không?
-    - mua [bún cá](find_food) ở đâu
-    - cho t một địa chỉ [bún cá](find_food) ngon đi
-    - [bún cá](find_food) chỗ nào bán?
-    - [bún cá](find_food) bán ở đâu
-    - chỗ nào bán [bún cá](find_food)
-    - t muốn ăn [bún cá](find_food)
-    - ăn [bún cá](find_food) ở đâu
+    - cho t hỏi món [bún đậu mắm tôm](find_food) có không?
+    - m có biết món [phở cuốn](find_food) mua ở đâu không?
+    - mua [bánh mì](find_food) ở đâu
+    - cho t một địa chỉ [bún bò huế](find_food) ngon đi
+    - [sushi](find_food) chỗ nào bán?
+    - [cơm cuộn](find_food) bán ở đâu
+    - chỗ nào bán [mỳ xào](find_food)
+    - t muốn ăn [mỳ cá](find_food)
+    - ăn [lẩu](find_food) ở đâu
     - [bún cá](find_food) ở chỗ nào
     - trên shopeefood có [bún](find_food) không?
     - đặt [bún cá chấm](find_food) ở đâu

@@ -17,7 +17,9 @@ function init(botLogoPath) {
     //--------------------------- Chatbot Frontend -------------------------------
     const chatContainer = document.getElementById("chat-container");
 
-    template = ` <button class='chat-btn'><img src = "./icons/comment.png" class = "material-icon" ></button>
+    template = ` <button class='chat-btn' style="background-color: rgb(44, 93, 203); font-size: 24px; box-shadow: rgb(207 207 207 / 67%) 0px 2px 4px 0px;">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comment-dots" class="svg-inline--fa fa-comment-dots fa-w-16 css-1fcbxrh" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 1em;"><path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path></svg>
+    </button>
 
     <div class='chat-popup'>
     
@@ -26,7 +28,7 @@ function init(botLogoPath) {
 				<img src='${botLogoPath}' alt='Chat Bot image' class='bot-img'> 
 			</div>
 			<h3 class='bot-title'>Covid Bot</h3>
-			<button class = "expand-chat-window" ><img src="./icons/open_fullscreen.png" class="material-icon" ></button>
+			<button class = "expand-chat-window" ><img src="./icons/open_fullscreen.png" class="material-icon"></button>
 		</div>
 
 		<div class='chat-area'>
@@ -34,21 +36,23 @@ function init(botLogoPath) {
                 <img class='bot-img' src ='${botLogoPath}' />
 				<span class='msg'>Hi, How can i help you?</span>
 			</div>
-
-			
-			
-
+			<div class="bot-msg bot-msg-selects">
+			    <button class="customer-button-option">Bot có thể làm gì?</button>
+			    <button class="customer-button-option">Hôm nay bao nhiêu độ?</button>
+			    <button class="customer-button-option">Ăn gì được</button>
+			    <button class="customer-button-option">Uống gì bây giờ</button>
+			</div>
 		</div>
-
 
 		<div class='chat-input-area'>
-			<input type='text' autofocus class='chat-input' onkeypress='return givenUserInput(event)' placeholder='Type a message ...' autocomplete='off'>
+			<input type='text' autofocus class='chat-input' onkeypress='return givenUserInput(event)' placeholder='Aa' autocomplete='off'>
 			<button class='chat-submit'><i class='material-icons'>send</i></button>
 		</div>
-
 	</div>`
 
     chatContainer.innerHTML = template;
+    // bot options first
+    mapActionBotOption();
 
     //--------------------------- Important Variables----------------------------
     var inactiveMessage = "Server is down, Please contact the developer to activate it"
@@ -77,7 +81,7 @@ function init(botLogoPath) {
             chatBtn.innerHTML = `<img src = "./icons/close.png" class = "material-icon" >`
         } else if (mobileDevice) {
             chatPopup.style.display = "none"
-            chatBtn.innerHTML = `<img src = "./icons/comment.png" class = "material-icon" >`
+            chatBtn.innerHTML = `<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comment-dots" class="svg-inline--fa fa-comment-dots fa-w-16 css-1fcbxrh" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 1em;"><path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path></svg>`
         } else {
             mobileView()
         }
@@ -108,8 +112,6 @@ function init(botLogoPath) {
         }
 
     })
-
-
 }
 
 
@@ -125,14 +127,36 @@ function givenUserInput(e) {
 }
 
 // to display user message on UI
-function setUserResponse() {
-    let userInput = chatInput.value;
-    let temp = `<div class="user-msg"><span class = "msg">${userInput}</span></div>`
+function setUserResponse(message = '') {
+    const userInput = message || chatInput.value;
+    const temp = `<div class="user-msg"><span class = "msg">${userInput}</span></div>`
     chatArea.innerHTML += temp;
     chatInput.value = ""
+    mapActionBotOption();
     scrollToBottomOfResults();
 }
 
+function addBotOptions(options = []) {
+    let optionElements = '<div class="bot-msg bot-msg-selects">';
+    options.forEach(option => optionElements += `<button class="customer-button-option">${option}</button>`);
+    optionElements += '</div>';
+    chatArea.innerHTML += optionElements;
+
+    mapActionBotOption();
+}
+
+function mapActionBotOption() {
+    const customerOptions = document.getElementsByClassName('customer-button-option');
+    Array.from(customerOptions).forEach(element => {
+        element.addEventListener('click', () => {
+            const customerOptionText = element.textContent.trim();
+            if (customerOptionText !== "") {
+                setUserResponse(customerOptionText);
+                send(customerOptionText);
+            }
+        })
+    });
+}
 
 
 function scrollToBottomOfResults() {
@@ -179,7 +203,7 @@ function setBotResponse(val) {
             // msg = 'I couldn\'t get that. Let\' try something else!';
             msg = inactiveMessage;
 
-            var BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' /><span class='msg'> ${msg} </span></div>`;
+            let BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' /><span class='msg'> ${msg} </span></div>`;
             $(BotResponse).appendTo('.chat-area').hide().fadeIn(1000);
             scrollToBottomOfResults();
             chatInput.focus();
@@ -189,18 +213,31 @@ function setBotResponse(val) {
             for (i = 0; i < val.length; i++) {
                 //check if there is text message
                 if (val[i].hasOwnProperty("text")) {
-                    var BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' /><span class='msg'>${val[i].text}</span></div>`;
+                    // insert text
+                    const response = formatResponse(val[i].text);
+                    const BotResponse = `<div class='bot-msg'><img class='bot-img' src='${botLogoPath}' /><span class='msg'>${response}</span></div>`;
                     $(BotResponse).appendTo('.chat-area').hide().fadeIn(1000);
+
+                    // insert options
+                    if (response.indexOf('Tôi tìm được món này') > -1) {
+                        setTimeout(() => {
+                            addBotOptions([
+                                'Nấu thế nào',
+                                'Món khác',
+                            ]);
+                            scrollToBottomOfResults();
+                        }, 1020);
+                    }
                 }
 
                 //check if there is image
                 if (val[i].hasOwnProperty("image")) {
-                    var BotResponse = "<div class='bot-msg'>" + "<img class='bot-img' src ='${botLogoPath}' />"
+                    console.log(val);
+                    const BotResponse = "<div class='bot-msg'>" + `<img class='bot-img' src='${botLogoPath}' />` +
                     '<img class="msg-image" src="' + val[i].image + '">' +
                         '</div>'
                     $(BotResponse).appendTo('.chat-area').hide().fadeIn(1000);
                 }
-
             }
             scrollToBottomOfResults();
             chatInput.focus();
@@ -209,8 +246,19 @@ function setBotResponse(val) {
     }, 500);
 }
 
+function formatResponse(textResponse) {
+    const urlRegex = /\[.{1,}\]\(.{1,}\)/g;
 
+    return textResponse.replace(/\r?\n/g, "<br />")
+        .replace(urlRegex, function (url) {
+            const text = url.replace('[', '')
+                .replace(/\]\(.{1,}\)/, '');
+            const link = url.replace(')', '')
+                .replace(/\[.{1,}\]\(/, '');
 
+            return `<a href="${link}" class="food-link">${text}</a>`;
+        });
+}
 
 function mobileView() {
     $('.chat-popup').width($(window).width());
