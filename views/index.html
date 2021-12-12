@@ -1,283 +1,411 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Ăn gì bây giờ? - Chatbot</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./static/bootstrap.min.css">
+    <link rel="icon" href="./static/img/icon2.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Chatbot style -->
     <script src="./static/a658a7b479.js"></script>
     <link rel="stylesheet" href="./static/aos.css"/>
-    <link rel="icon" href="./static/img/icon2.png">
     <link rel="stylesheet" href="./static/demo_bot/chatbot-ui.css">
     <link rel="stylesheet" href="./static/prism.css"/>
     <link rel="stylesheet" href="./static/styles.css">
-
-    <title>Ăn gì bây giờ? - Chatbot</title>
+    <!-- Chatbot style -->
 </head>
-
 <body>
-    <div class="hero" id="hero">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-            <div class="container">
-                <a class="navbar-brand" href="/"><i class="fas fa-utensils"></i> Chatbot <span>Ăn gì bây giờ?</span> </a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<!-- nav -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="z-index: 1">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="fas fa-utensils"></i> Chatbot <span>Ăn gì bây giờ?</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white hover font-weight-bold" href="#features">Các tính năng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white hover" href="#get-started">Bắt đầu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white hover" href="#futures">Tầm nhìn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white hover" target="_blank" href="https://github.com/nghiemtientuan/lunchChatBot">Repo</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <br>
-
-        <div class="hero-content">
-            <div class="hero-bot mobile">
-                <img src="./static/img/homepage-bot.png " alt="Bot Image ">
-            </div>
-
-            <div data-aos="fade-down-right" data-aos-duration="1000" class="hero-header">
-                <h1>Ăn gì bây giờ: <br><span class="primary-color"> Cơm nhà không la cà bạn ơi!</span><br></h1>
-                <br/>
-
-                <p>
-                    Một trong những câu hỏi lớn nhất của việc ở nhà chính là "Ăn gì bây giờ?". Ngoài team đau đầu gọi
-                    ship mỗi ngày, hội đảm đang cũng bất ngờ bổ sung thêm những cái tên mới với những bữa cơm "nhà làm"
-                    chuẩn chỉnh từ hình thức đến nội dung khiến bao người trầm trồ. Rõ là không phải master chef mà sao
-                    các chị lại khéo tay thế này, món nào món nấy nhìn vào là thấy đói meo liền luôn đây nè!
-                </p><br>
-
-                <h3>
-                    <span class="primary-color cachy-line">Nào cùng nhau tìm ra món ăn phù hợp cho ngày hôm nay nào!</span>
-                </h3>
-
-                <div class="btns">
-                    <a href="#features">
-                        <button class="btn-green">Các tính năng</button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="/" class="nav-link">Trang chủ</a></li>
+                <li class="nav-item"><a href="#foods" class="nav-link">Các món ăn</a></li>
+                <li class="nav-item">
+                    <a
+                        href="https://github.com/nghiemtientuan/lunchChatBot.git"
+                        class="nav-link"
+                        target="_blank"
+                    >
+                        Repo
                     </a>
-                </div>
-            </div>
-
-            <div data-aos="fade-up-left" data-aos-duration="1000" class="hero-bot desktop">
-                <img src="./static/img/homepage-bot.png" alt="Bot Image ">
-            </div>
-        </div>
-        <br>
-    </div>
-
-    <div id="features">
-        <h1 class="section-title"><span class="primary-color ">Các tính năng chính</span></h1><br>
-
-        <div class="container">
-            <div class="card-outer-container">
-                <div
-                    data-aos="fade-right"
-                    data-aos-duration="800"
-                    class="card feature-card"
-                    style="width: 18rem;background-color: rgb(48,90,117);color:white"
-                >
-                    <div class="card-body">
-                        <i class="fa-3x fa fa-desktop mb-3" aria-hidden="true"></i>
-                        <br>
-                        <h5 class="card-title">SỬ DỤNG ĐƠN GIẢN</h5>
-                        <p class="card-text">Bằng cách trò chuyện với người dùng như các kênh trò chuyện. Thật đơn giản để sử dụng.</p>
-                    </div>
-                </div>
-
-                <div
-                    data-aos="fade-left"
-                    data-aos-duration="800"
-                    class="card feature-card"
-                    style="width: 18rem;background-color: rgb(48,90,117);color:white "
-                >
-                    <div class="card-body">
-                        <i class="fa-3x fa fa-magic mb-3" aria-hidden="true"></i>
-                        <br>
-                        <h5 class="card-title">TRÒ CHUYỆN</h5>
-                        <p class="card-text">CHATBOT có thể trả lời những câu chào hỏi, thời tiết, món ăn,... Dựa trên những đặc điểm về thời tiết và cách nấu.</p>
-                    </div>
-                </div>
-
-                <div
-                    data-aos="zoom-in"
-                    data-aos-duration="800"
-                    class="card feature-card"
-                    style="width: 18rem;background-color: rgb(14,55,74);color:white "
-                >
-                    <div class="card-body">
-                        <i class="fa-3x fa fa-trophy mb-3" aria-hidden="true"></i>
-                        <br>
-                        <h5 class="card-title">TÌM KIẾM MÓN ĂN</h5>
-                        <p class="card-text">Với hơn 2000 món ăn được lấy từ now - nay là shopee food, giúp cho việc đa dạng hóa món ăn có thể tìm kiếm.</p>
-                    </div>
-                </div>
-            </div>
-
+                </li>
+            </ul>
         </div>
     </div>
-    <br /><br />
+</nav>
+<!-- END nav -->
 
-    <div id="get-started" class="dark-bg">
-        <br>
-        <h1 class="text-center text-white">Bắt đầu</h1><br>
-        <br>
-
-        <div class="container">
-            <h3 data-aos="fade-right" data-aos-duration="500" class="text-white text-center">
-                Mở giao diện hội thoại ở góc màn hình bên phải, và cũng bắt đầu với những đoạn chat đầu tiên.
-            </h3>
-            <br>
-
-            <div class="row ">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                    <ul class="list-group list-group-left">
-                        <li data-aos="fade-right" data-aos-duration="500">
-                            <img src="./icons/chatbot1.png" alt="Bot Image">
-                        </li>
-
-                        <li data-aos="fade-right" data-aos-duration="700" class="mt-5">
-                            <img src="./icons/chatbot3.png" alt="Bot Image">
-                        </li>
-                    </ul>
+<section class="home-slider js-fullheight owl-carousel bg-white" id="home">
+    <div class="slider-item js-fullheight">
+        <div class="overlay"></div>
+        <div class="container-fluid p-0">
+            <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
+                <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_3.jpg);">
+                    <div class="overlay"></div>
                 </div>
-                <div class="col ">
-                    <ul class="list-group list-group-right">
-                        <li data-aos="fade-left" data-aos-duration="600">
-                            <img src="./icons/chatbot2.png" alt="Bot Image">
-                        </li>
-
-                        <li data-aos="fade-left" data-aos-duration="750" class="mt-5">
-                            <img src="./icons/chatbot4.png" alt="Bot Image">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <br />
-
-    <div id="futures">
-        <h1 class="section-title ">Tầm nhìn</h1><br>
-        <div class="container">
-            <h3 class="text-center">Để trả lời câu hỏi "ăn gì tối nay" không phải là chuyện đơn giản và dễ dàng chút
-                nào? Có vô số món ăn có thể chọn lựa, nhưng ta không biết nên ăn gì vào?. Việc đưa ra lựa chọn rằng ăn
-                gì tưởng chừng khá đơn giản tuy nhiên đứng trước nhiều lựa chọn chúng ta thường "ăn gì cũng được" tức là ko ăn gì.
-            </h3>
-            <br>
-
-            <div class="container">
-            <div class="card-outer-container">
-                <div
-                    data-aos="fade-right"
-                    data-aos-duration="800"
-                    class="card feature-card"
-                    style="width: 18rem;background-color: rgb(48,90,117);color:white"
-                >
-                    <div class="card-body">
-                        <i class="fa-3x fa fa-desktop mb-3" aria-hidden="true"></i>
-                        <br>
-                        <h5 class="card-title">GỢI Ý MÓN</h5>
-                        <p class="card-text">Cải thiện khả năng gợi ý món dựa trên các tiêu chí khác nhau, không chỉ có
-                            mỗi thời tiết. Có thể từ tâm trạng con người để đánh giá. Ví dụ ăn kem khi trời lạnh...</p>
-                    </div>
-                </div>
-
-                <div
-                    data-aos="fade-left"
-                    data-aos-duration="800"
-                    class="card feature-card"
-                    style="width: 18rem;background-color: rgb(48,90,117);color:white "
-                >
-                    <div class="card-body">
-                        <i class="fa-3x fa fa-magic mb-3" aria-hidden="true"></i>
-                        <br>
-                        <h5 class="card-title">TRÒ CHUYỆN</h5>
-                        <p class="card-text">Tăng khả năng trò chuyện đối với bot. Bot có thể trả lời nhiều câu khác nhau.</p>
-                    </div>
-                </div>
-
-                <div
-                    data-aos="zoom-in"
-                    data-aos-duration="800"
-                    class="card feature-card"
-                    style="width: 18rem;background-color: rgb(14,55,74);color:white "
-                >
-                    <div class="card-body">
-                        <i class="fa-3x fa fa-trophy mb-3" aria-hidden="true"></i>
-                        <br>
-                        <h5 class="card-title">ĐA NGÔN NGỮ, VÙNG MIỀN</h5>
-                        <p class="card-text">Hiện tại, bot chỉ có thể hiểu được một loại ngôn ngữ cố định. Trong tương
-                            lai có thể hiểu được đa dạng ngôn ngữ, phù hợp với những người đa ngôn ngữ, và các đối tượng khác nhau</p>
+                <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
+                     data-scrollax=" properties: { translateY: '70%' }">
+                    <div class="text mt-md-5">
+                        <h1 class="mb-4">Ăn gì bây giờ: <br> Cơm nhà không la cà bạn ơi!</h1>
+                        <p>Một trong những câu hỏi lớn nhất của việc ở nhà chính là "Ăn gì bây giờ?". Ngoài team đau đầu
+                            gọi ship mỗi ngày, hội đảm đang cũng bất ngờ bổ sung thêm những cái tên mới với những bữa
+                            cơm "nhà làm" chuẩn chỉnh từ hình thức đến nội dung khiến bao người trầm trồ. Rõ là không
+                            phải master chef mà sao các chị lại khéo tay thế này, món nào món nấy nhìn vào là thấy đói
+                            meo liền luôn đây nè!</p>
                     </div>
                 </div>
             </div>
-
-        </div>
-            <br /><br />
-
-            <div class="dark-card text-center">Chúc các bạn ngon miệng.</div>
         </div>
     </div>
 
-    <br><br>
+    <div class="slider-item js-fullheight">
+        <div class="overlay"></div>
+        <div class="container-fluid p-0">
+            <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
+                 data-scrollax-parent="true">
+                <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_2.jpg);">
+                    <div class="overlay"></div>
+                </div>
+                <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
+                     data-scrollax=" properties: { translateY: '70%' }">
+                    <div class="text mt-md-5">
+                        <h1 class="mb-4">Ăn gì bây giờ: <br> Nhớ lắm... bữa cơm nhà!</h1>
+                        <p>Mâm cơm đơn giản chỉ là canh chua, rau muống, cá rô kho tiêu, vậy mà bỗng gợi lên trong tôi nỗi nhớ quê da diết.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <footer class="dark-bg">
-        <h2 class="text-white">Ăn gì bây giờ?</h2>
-        <h2>
-            <a class="primary-color" target="_blank" href="https://github.com/nghiemtientuan">Github</a>
-        </h2>
-    </footer>
+    <div class="slider-item js-fullheight">
+        <div class="overlay"></div>
+        <div class="container-fluid p-0">
+            <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
+                 data-scrollax-parent="true">
+                <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_1.jpg);">
+                    <div class="overlay"></div>
+                </div>
+                <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
+                     data-scrollax=" properties: { translateY: '70%' }">
+                    <div class="text mt-md-5">
+                        <h1 class="mb-4">Ăn gì bây giờ: <br> MẸ ƠI, CON NHỚ CƠM NHÀ!</h1>
+                        <p>Bữa cơm nhà không phải là bữa cơm thịnh soạn nhất nhưng có lẽ không ai quên được hương vị
+                            những món ngon mẹ nấu và dù trưởng thành, được thưởng thức nhiều món ăn của nhiều nơi, từ
+                            nhà hàng sang chảnh cho đến khách sạn 5*</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!--  Chatbot ui rasa  -->
-    <!--        <div id="rasa-chat-widget" data-websocket-url="http://localhost:5005" style="left: 20px; bottom: 39px"></div>-->
-    <!--        <style>#rasa-chat-widget-container {left: 20px; bottom: 39px; right: unset}</style>-->
-    <!--        <script src="./static/widget.js" type="application/javascript"></script>-->
-    <!--  END chatbot socket  -->
+<!-- counter -->
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);"
+         data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row d-md-flex align-items-center justify-content-center">
+            <div class="col-lg-10">
+                <div class="row d-md-flex align-items-center">
+                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18">
+                            <div class="text">
+                                <strong class="number" data-number="3">0</strong>
+                                <span>Nguồn dữ liệu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18">
+                            <div class="text">
+                                <strong class="number" data-number="500">0</strong>
+                                <span>Món ăn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END counter -->
 
-    <!--  Chatbot socket ui  -->
-    <div id="chat-container"></div>
-    <script src="./static/demo_bot/chatbot-ui.js"></script>
+<!-- menu -->
+<section class="ftco-section" id="foods">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span class="subheading">Các món ăn</span>
+                <h2 class="mb-4">Không thưởng thức – phí cả cuộc đời</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/mi_quang.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Mỳ Quảng</h3>
+                        <span class="position mb-2">Đặc sản của tỉnh Quảng Nam</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/pho.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Phở</h3>
+                        <span class="position mb-2">Món ngon mỗi ngày ở Việt Nam </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/goi_cuon.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Gỏi cuốn</h3>
+                        <span class="position mb-2">Món ăn nhẹ hoàn hảo của Việt Nam</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/bo_kho.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bò khô</h3>
+                        <span class="position mb-2">Món ăn này được đặc biệt yêu thích</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/bun_cha.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bún chả</h3>
+                        <span class="position mb-2">Bún chả là một đại diện của phong cách ẩm thực Hà Nội</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/cha_gio.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Chả giò</h3>
+                        <span class="position mb-2">Bún chả là một đại diện của phong cách ẩm thực Việt Nam</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/bun_man.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bún mắm</h3>
+                        <span class="position mb-2">Món ăn này được người dân địa phương biến tấu với nhiều nguyên liệu khác nhau</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/ga_nuong_sa.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Gà nướng sả</h3>
+                        <span class="position mb-2">Gà nướng sả cũng tương tự như các món bún nổi tiếng khác của Việt Nam</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/com_tam.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Cơm tấm</h3>
+                        <span class="position mb-2">Đây là bữa trưa vô cùng phổ biến ở Sài Gòn</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/muc_chien.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Mực chiên</h3>
+                        <span class="position mb-2">Mực tươi rất dẽ mua và phổ biến trong ẩm thực Việt</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/bun_bo_hue.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bún bò Huế</h3>
+                        <span class="position mb-2">Ẩm thực cố đô Huế nổi tiếng với hương vị hài hòa giữa cay, chua, mặn và ngọt</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/banh_mi.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bánh mì</h3>
+                        <span class="position mb-2">Hàng triệu ổ bánh mì được nướng mỗi ngày, không chỉ ngon, giá rẻ mà còn đầy đủ chất dinh dưỡng</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/ca_kho_to.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Cá kho tộ</h3>
+                        <span class="position mb-2">Cá được đun sôi liên tục trong dầu ăn, nước hàng, tỏi, hành, muối, nước mắm và nước dừa</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/goi.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Gỏi</h3>
+                        <span class="position mb-2">Các món nộm/ gỏi thường có nguyên liệu chính từ đu đủ xanh bào sợ, bắp cải thái chỉ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/rau_muong_xao_toi.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Rau muống xào tỏi</h3>
+                        <span class="position mb-2">Rau muống xanh mướt được xào với tỏi và dầu ăn béo ngậy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/cao-lau.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Cao lầu</h3>
+                        <span class="position mb-2">Món cao lầu là đặc sản của Hội An</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/cha_ca.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Chả cá</h3>
+                        <span class="position mb-2">Cá được ướp với bột nghệ, gừng, tỏi và nước mắm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/oc.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Ốc</h3>
+                        <span class="position mb-2">Người Việt rất thích ăn ốc và các loại ốc ở đây cũng vô cùng đa dạng cả về chủng loại</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/banh_cuon.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bánh cuốn</h3>
+                        <span class="position mb-2">Bánh cuốn được làm bằng cách tráng bột gạo mỏng thành vỏ bánh</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/banh_khot.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Bánh khọt</h3>
+                        <span class="position mb-2">Nước chấm dùng cho bánh khọt là nước mắm pha chua ngọt, vừa miệng thực khách</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="staff">
+                    <div class="img" style="background-image: url(images/foods/ga_nuong.jpg);"></div>
+                    <div class="text px-4 pt-4">
+                        <h3>Gà nướng</h3>
+                        <span class="position mb-2">Gà quết hành phi, xì dầu bên ngoài con gà rồi nướng trên bếp than</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END menu -->
 
-    <script>
-        createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook',
-            botLogo = "./icons/bot_icon.png",
-            title = "Bánh bao chào bạn",
-            welcomeMessage = "Chào bạn tôi có thể giúp gì được cho bạn?",
-            inactiveMsg = "Tạm thời tôi bị mất kết nối với máy chủ, bạn vui lòng tải lai trang."
-        )
-    </script>
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+    </svg>
+</div>
+<!-- END loader -->
 
-    <!--  Styles  -->
-    <script src="./static/prism.js"></script>
-    <script src="./static/jquery-3.5.1.slim.min.js"></script>
-    <script src="./static/bootstrap.min.js"></script>
-    <script src="./static/aos.js"></script>
-    <script>AOS.init();</script>
-    <script>$('[data-aos]').parent().addClass('hideOverflowOnMobile');</script>
-    <!--  END Styles  -->
-    <!--  END chatbot socket ui  -->
+<!--  Chatbot socket ui  -->
+<div id="chat-container"></div>
+<script src="./static/demo_bot/chatbot-ui.js"></script>
+
+<script>
+    createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook',
+        botLogo = "./icons/bot_icon.png",
+        title = "Bánh bao chào bạn",
+        welcomeMessage = "Chào bạn tôi có thể giúp gì được cho bạn?",
+        inactiveMsg = "Tạm thời tôi bị mất kết nối với máy chủ, bạn vui lòng tải lai trang."
+    )
+</script>
+
+<!--  Styles  -->
+<script src="./static/prism.js"></script>
+<script src="./static/jquery-3.5.1.slim.min.js"></script>
+<script src="./static/aos.js"></script>
+<script>AOS.init();</script>
+<script>$('[data-aos]').parent().addClass('hideOverflowOnMobile');</script>
+<!--  END Styles  -->
+<!--  END chatbot socket ui  -->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+
 </body>
-
 </html>

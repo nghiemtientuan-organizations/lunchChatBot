@@ -36,6 +36,12 @@ function init(botLogoPath) {
                 <img class='bot-img' src ='${botLogoPath}' />
 				<span class='msg'>Hi, How can i help you?</span>
 			</div>
+			<div class="bot-msg bot-msg-selects">
+			    <button class="customer-button-option">Bot có thể làm gì?</button>
+			    <button class="customer-button-option">Hôm nay bao nhiêu độ?</button>
+			    <button class="customer-button-option">Ăn gì được</button>
+			    <button class="customer-button-option">Uống gì bây giờ</button>
+			</div>
 		</div>
 
 		<div class='chat-input-area'>
@@ -45,6 +51,8 @@ function init(botLogoPath) {
 	</div>`
 
     chatContainer.innerHTML = template;
+    // bot options first
+    mapActionBotOption();
 
     //--------------------------- Important Variables----------------------------
     var inactiveMessage = "Server is down, Please contact the developer to activate it"
@@ -77,14 +85,6 @@ function init(botLogoPath) {
         } else {
             mobileView()
         }
-
-        // bot options first
-        addBotOptions([
-            'Bot có thể làm gì?',
-            'Hôm nay bao nhiêu độ?',
-            'Ăn gì được',
-            'Uống gì bây giờ',
-        ]);
     })
 
     chatSubmit.addEventListener("click", () => {
