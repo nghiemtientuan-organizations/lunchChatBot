@@ -372,8 +372,8 @@
 
 <script>
     createChatBot(
-        hotServer = 'http://localhost:8000',
-        host = 'http://localhost:5005/webhooks/rest/webhook',
+        hotServer = '{{env('APP_URL')}}',
+        host = '{{env('APP_URL_RASA')}}',
         botLogo = "./icons/bot_icon.png",
         title = "Bánh bao chào bạn",
         welcomeMessage = "Chào bạn tôi có thể giúp gì được cho bạn?",
