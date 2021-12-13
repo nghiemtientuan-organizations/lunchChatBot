@@ -220,6 +220,9 @@ class ActionGetSuggestFood(Action):
             text_response += '- Giảm giá: {} (theo shopee food)\n'.format(suggest_food[6])
             # dispatcher.utter_message(text='Giảm giá: {} (theo shopee food)'.format(suggest_food[6]))
         if suggest_food[5]:
+            url = requests.get(suggest_food[5])
+            htmltext = url.text
+            print(htmltext)
             text_response += '[{link}]({link})\n'.format(link=suggest_food[5])
             # dispatcher.utter_message(text='[{link}]({link})'.format(link=suggest_food[5]))
         if suggest_food[8] and suggest_food[8] >= 4.5:

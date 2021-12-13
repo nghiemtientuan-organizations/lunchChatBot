@@ -217,6 +217,7 @@ function setBotResponse(val) {
                     const response = formatResponse(val[i].text);
                     const BotResponse = `<div class='bot-msg'><img class='bot-img' src='${botLogoPath}' /><span class='msg'>${response}</span></div>`;
                     $(BotResponse).appendTo('.chat-area').hide().fadeIn(1000);
+                    previewUrl(val[i].text);
 
                     // insert options
                     if (response.indexOf('Tôi tìm được món này') > -1) {
@@ -258,6 +259,14 @@ function formatResponse(textResponse) {
 
             return `<a href="${link}" class="food-link" target="_blank">${text}</a>`;
         });
+}
+
+function previewUrl(textResponse = '') {
+    const urlRegex = /\[.{1,}\]\(.{1,}\)/g;
+    const founds = textResponse.match(urlRegex);
+    if (founds && founds.length) {
+        const link = founds[0].replace(')', '').replace(/\[.{1,}\]\(/, '');
+    }
 }
 
 function mobileView() {
