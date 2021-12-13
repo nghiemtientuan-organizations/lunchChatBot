@@ -256,7 +256,7 @@ function formatResponse(textResponse) {
             const link = url.replace(')', '')
                 .replace(/\[.{1,}\]\(/, '');
 
-            return `<a href="${link}" class="food-link">${text}</a>`;
+            return `<a href="${link}" class="food-link" target="_blank">${text}</a>`;
         });
 }
 
