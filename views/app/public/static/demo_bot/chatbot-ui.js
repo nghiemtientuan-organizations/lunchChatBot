@@ -170,7 +170,7 @@ Frontend Part Completed
 // host = 'http://localhost:5005/webhooks/rest/webhook'
 function send(message) {
     chatInput.focus();
-    console.log("User Message:", message)
+    showLoading();
     $.ajax({
         url: host,
         type: 'POST',
@@ -183,11 +183,13 @@ function send(message) {
             if (data != null) {
                 setBotResponse(data);
             }
-            console.log("Rasa Response: ", data, "\n Status:", textStatus)
+            removeShowLoading();
+            console.debug("Rasa Response: ", data)
         },
         error: function(errorMessage) {
             setBotResponse("");
-            console.log('Error' + errorMessage);
+            removeShowLoading();
+            console.debug('Error' + errorMessage);
 
         }
     });
@@ -287,6 +289,18 @@ function formatResponse(textResponse) {
 
             return `<a href="${link}" class="food-link">${text}</a>`;
         });
+}
+
+function showLoading() {
+    const BotResponse = "<div class='bot-msg' id='bot-loading'>" + `<img class='bot-img' src='${botLogoPath}' />` +
+        '<img class="msg-image" src="./icons/loading.gif">' +
+        '</div>'
+    $(BotResponse).appendTo('.chat-area').show();
+    scrollToBottomOfResults();
+}
+
+function removeShowLoading() {
+    document.getElementById('bot-loading').remove();
 }
 
 function mobileView() {
