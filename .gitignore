@@ -139,5 +139,3 @@ rasa.db-wal
 .keras
 .config
 results
-
-views/app/.gitignore
