@@ -9,18 +9,19 @@ Framework: Rasa.
 
 Slide:
 
-![slide](https://github.com/nghiemtientuan/lunchChatBot/tree/master/demo/slide-noc-nha.pptx?raw=true)
+
+![slide](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/slide-noc-nha.pptx?raw=true)
 
 Image demo:
 
-![index](https://github.com/nghiemtientuan/lunchChatBot/tree/master/demo/index.png?raw=true)
-![weather](https://github.com/nghiemtientuan/lunchChatBot/tree/master/demo/0.png?raw=true)
-![suggest food](https://github.com/nghiemtientuan/lunchChatBot/tree/master/demo/1.png?raw=true)
-![suggest cook](https://github.com/nghiemtientuan/lunchChatBot/tree/master/demo/2.png?raw=true)
+![index](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/index.png?raw=true)
+![weather](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/0.png?raw=true)
+![suggest food](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/1.png?raw=true)
+![suggest cook](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/2.png?raw=true)
 
 Video demo:
 
-![video](https://github.com/nghiemtientuan/lunchChatBot/tree/master/demo/demo.mp4?raw=true)
+![video](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/demo.mp4?raw=true)
 
 # 2. Prerequisites
 - docker & docker-compose
