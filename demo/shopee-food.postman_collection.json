@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "ec4e152c-dabc-44c2-91bd-e5e4c4abd303",
+		"name": "shopee-food",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://gappapi.deliverynow.vn/api/delivery/search_global",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-foody-access-token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-api-version",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-app-type",
+						"value": "1004",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-id",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-language",
+						"value": "vi",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-type",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-version",
+						"value": "3.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category_group\": 1,\n    \"city_id\": 218,\n    \"delivery_only\": true,\n    \"district_ids\": [21],\n    \"foody_services\": [1],\n    \"full_restaurant_ids\": true,\n    \"keyword\": \"\",\n    \"sort_type\": 8\n}"
+				},
+				"url": {
+					"raw": "https://gappapi.deliverynow.vn/api/delivery/search_global",
+					"protocol": "https",
+					"host": [
+						"gappapi",
+						"deliverynow",
+						"vn"
+					],
+					"path": [
+						"api",
+						"delivery",
+						"search_global"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://gappapi.deliverynow.vn/api/delivery/get_infos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-access-token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-api-version",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-app-type",
+						"value": "1004",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-id",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-language",
+						"value": "vi",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-type",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-version",
+						"value": "3.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurant_ids\": [264770, 221770, 1002194, 885521, 1021281, 172294, 805136, 1003000, 726012, 146079, 1045049, 201735]\n}"
+				},
+				"url": {
+					"raw": "https://gappapi.deliverynow.vn/api/delivery/get_infos",
+					"protocol": "https",
+					"host": [
+						"gappapi",
+						"deliverynow",
+						"vn"
+					],
+					"path": [
+						"api",
+						"delivery",
+						"get_infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://gappapi.deliverynow.vn/api/delivery/get_detail?id_type=2&request_id=13631",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-access-token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-api-version",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-app-type",
+						"value": "1004",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-id",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-language",
+						"value": "vi",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-type",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-version",
+						"value": "3.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurant_ids\": [264770, 221770, 1002194, 885521, 1021281, 172294, 805136, 1003000, 726012, 146079, 1045049, 201735]\n}"
+				},
+				"url": {
+					"raw": "https://gappapi.deliverynow.vn/api/delivery/get_detail?id_type=2&request_id=13631",
+					"protocol": "https",
+					"host": [
+						"gappapi",
+						"deliverynow",
+						"vn"
+					],
+					"path": [
+						"api",
+						"delivery",
+						"get_detail"
+					],
+					"query": [
+						{
+							"key": "id_type",
+							"value": "2"
+						},
+						{
+							"key": "request_id",
+							"value": "13631"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://gappapi.deliverynow.vn/api/dish/get_delivery_dishes?id_type=2&request_id=13631",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-foody-access-token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-api-version",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-app-type",
+						"value": "1004",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-id",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-language",
+						"value": "vi",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-type",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "x-foody-client-version",
+						"value": "3.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"restaurant_ids\": [264770, 221770, 1002194, 885521, 1021281, 172294, 805136, 1003000, 726012, 146079, 1045049, 201735]\n}"
+				},
+				"url": {
+					"raw": "https://gappapi.deliverynow.vn/api/dish/get_delivery_dishes?id_type=2&request_id=13631",
+					"protocol": "https",
+					"host": [
+						"gappapi",
+						"deliverynow",
+						"vn"
+					],
+					"path": [
+						"api",
+						"dish",
+						"get_delivery_dishes"
+					],
+					"query": [
+						{
+							"key": "id_type",
+							"value": "2"
+						},
+						{
+							"key": "request_id",
+							"value": "13631"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
