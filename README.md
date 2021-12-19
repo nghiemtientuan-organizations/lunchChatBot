@@ -9,8 +9,7 @@ Framework: Rasa.
 
 Slide:
 
-
-![slide](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/slide-noc-nha.pptx?raw=true)
+https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/slide-noc-nha.pptx
 
 Image demo:
 
@@ -21,7 +20,7 @@ Image demo:
 
 Video demo:
 
-![video](https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/demo.mp4?raw=true)
+https://github.com/nghiemtientuan/lunchChatBot/blob/master/demo/demo.mp4
 
 # 2. Prerequisites
 - docker & docker-compose
