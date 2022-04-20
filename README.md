@@ -50,6 +50,17 @@ Change folder permission
     docker-compose up -d
 ```
 
+Setting hot server env
+```
+    cd views/app
+    cp .env.example .env
+    composer install
+    php artisan key:generate
+    
+    # edit env to usage host/port
+    APP_URL
+```
+
 ## Option 2: Install immediate to PC
 
 - Install the requirements inside of a Python virtualenv (recommend)
@@ -69,6 +80,9 @@ terminal 1 (http://localhost:5055)
 ```BASH
     rasa train
     rasa run actions
+    
+    cd models
+    sudo chmod 777 -R ./*
 ```
 
 terminal 2 - UI (http://localhost:5005)
